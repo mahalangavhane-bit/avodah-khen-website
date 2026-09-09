@@ -9,6 +9,10 @@
   --line: rgba(20, 34, 31, 0.12);
   --white: #fff;
 
+  --gold: #c9a35a;
+  --gold-soft: rgba(201, 163, 90, 0.35);
+  --gold-faint: rgba(201, 163, 90, 0.14);
+
   font-family: "Segoe UI", Georgia, serif;
 }
 
@@ -38,7 +42,8 @@ a {
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
 }
 
@@ -66,10 +71,17 @@ textarea {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  font-size: 0.92rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.company-logo {
+  display: block;
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  transform: scale(1.8);
+  transform-origin: left center;
 }
 
 .mark {
@@ -468,6 +480,30 @@ h2 {
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 32px;
   margin-bottom: 32px;
+}
+ /* =========================
+   FOOTER LOGO
+========================= */
+
+.foot .footer-logo-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.foot .footer-brand {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.foot .footer-logo {
+  display: block;
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  margin: -15px 0 0 0;
 }
 
 .foot h4 {
@@ -1366,6 +1402,781 @@ h2 {
 }
 
 /* =========================================
+   COMPANY ADDRESS
+   ========================================= */
+
+.company-address {
+  margin-top: 28px;
+}
+
+.company-address h3 {
+  margin-bottom: 8px;
+}
+
+.company-address p {
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =========================================
+   COMING SOON PAGES
+   Proptech & Fintech
+   ========================================= */
+
+/* Main Coming Soon page */
+
+.cs-page {
+  background: var(--ink);
+  overflow: hidden;
+}
+
+/* Hero */
+
+.cs-hero {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  min-height: 92vh;
+  background:
+    linear-gradient(
+      180deg,
+      #0d1614 0%,
+      #14221f 60%,
+      #16261f 100%
+    );
+  padding: 14vh 6vw 10vh;
+  overflow: hidden;
+}
+
+/* Background glow */
+
+.cs-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      var(--gold-faint),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 8% 86%,
+      rgba(42, 106, 91, 0.16),
+      transparent 45%
+    );
+}
+
+/* Artwork container */
+
+.cs-art-wrap {
+  position: absolute;
+  z-index: 0;
+  right: -4vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(46vw, 560px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.cs-art {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* =========================================
+   PROPTECH ART
+   ========================================= */
+
+.cs-gridlines line {
+  stroke: var(--gold);
+  stroke-opacity: 0.14;
+  stroke-width: 1;
+}
+
+.cs-skyline rect {
+  fill: var(--gold-faint);
+  stroke: var(--gold);
+  stroke-opacity: 0.55;
+  stroke-width: 1.2;
+
+  opacity: 0;
+
+  transform-box: fill-box;
+  transform-origin: bottom center;
+
+  animation: cs-rise 1s ease forwards;
+}
+
+/* =========================================
+   FINTECH ART
+   ========================================= */
+
+.cs-network-lines line {
+  stroke: var(--gold);
+  stroke-opacity: 0.22;
+  stroke-width: 1.2;
+}
+
+.cs-wave {
+  fill: none;
+
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-linecap: round;
+
+  stroke-dasharray: 760;
+  stroke-dashoffset: 760;
+
+  animation: cs-draw 2.4s ease forwards 0.3s;
+}
+
+.cs-node {
+  fill: var(--gold);
+
+  transform-box: fill-box;
+  transform-origin: center;
+
+  opacity: 0;
+
+  animation:
+    cs-node-in 0.6s ease forwards,
+    cs-pulse 2.6s ease-in-out infinite;
+
+  animation-delay: inherit;
+}
+
+/* Floating geometric elements */
+
+.cs-float {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  animation: cs-float 7s ease-in-out infinite;
+}
+
+.cs-float rect,
+.cs-float circle {
+  fill: none;
+  stroke: var(--gold);
+  stroke-opacity: 0.4;
+  stroke-width: 1.4;
+}
+
+.cs-float-b {
+  animation-duration: 9s;
+  animation-delay: 1.1s;
+}
+
+/* =========================================
+   HERO CONTENT
+   ========================================= */
+
+.cs-hero-copy {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 700px;
+  margin-right: auto;
+}
+
+/* Badge */
+
+.cs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 16px;
+
+  border: 1px solid var(--gold-soft);
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: var(--gold);
+
+  margin-bottom: 22px;
+}
+
+.cs-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--gold);
+
+  animation: cs-pulse 2s ease-in-out infinite;
+}
+
+/* Kicker */
+
+.cs-hero-copy .kicker {
+  color: var(--gold);
+}
+
+/* Main title */
+
+.cs-title {
+  font-size: clamp(3.1rem, 11vw, 7.2rem);
+  line-height: 0.94;
+
+  font-weight: 700;
+  letter-spacing: 0.01em;
+
+  color: var(--sand);
+
+  margin-bottom: 22px;
+}
+
+/* =========================================
+   COMING SOON TEXT
+   ========================================= */
+
+.cs-soon {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 26px;
+}
+
+.cs-soon-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+
+  color: var(--gold);
+
+  white-space: nowrap;
+}
+
+.cs-soon-line {
+  height: 1px;
+  width: 46px;
+
+  background: var(--gold-soft);
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  animation: cs-line-grow 0.9s ease forwards 0.5s;
+}
+
+.cs-soon-line:last-child {
+  transform-origin: right;
+}
+
+/* Quote */
+
+.cs-quote {
+  font-style: italic;
+  color: rgba(243, 235, 225, 0.92);
+}
+
+/* Description */
+
+.cs-desc {
+  margin-top: 14px;
+
+  max-width: 52ch;
+
+  color: rgba(243, 235, 225, 0.68);
+
+  line-height: 1.65;
+}
+
+/* =========================================
+   CTA
+   ========================================= */
+
+.cs-hero .actions {
+  margin-top: 30px;
+}
+
+.cs-hero .btn.primary {
+  background: var(--clay);
+  color: var(--white);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.cs-hero .btn.primary:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   TRANSITION
+   ========================================= */
+
+.cs-transition {
+  position: relative;
+
+  background: var(--ink);
+
+  padding: 0 6vw 64px;
+
+  text-align: center;
+}
+
+.cs-transition-line {
+  display: block;
+
+  width: 1px;
+  height: 56px;
+
+  margin: 0 auto 22px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--gold-soft),
+      transparent
+    );
+}
+
+.cs-transition p {
+  font-size: 0.78rem;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: rgba(243, 235, 225, 0.55);
+}
+
+/* =========================================
+   COMING SOON ANIMATIONS
+   ========================================= */
+
+@keyframes cs-rise {
+  from {
+    opacity: 0;
+    transform: scaleY(0.4);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes cs-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cs-node-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cs-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes cs-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes cs-line-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* =========================================
+   PREMIUM CAREERS APPLICATION FORM
+   ONLY FORM DESIGN
+   ========================================= */
+
+.cr-form-section {
+  padding: 88px 6vw 110px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* Form card */
+
+.cr-form-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+  row-gap: 22px;
+
+  padding: 42px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid rgba(20, 34, 31, 0.1);
+  border-radius: 24px;
+
+  box-shadow:
+    0 24px 70px rgba(20, 34, 31, 0.08),
+    0 4px 18px rgba(20, 34, 31, 0.04);
+
+  overflow: hidden;
+}
+
+/* Premium top accent */
+
+.cr-form-grid::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--forest),
+      var(--gold),
+      var(--clay)
+    );
+}
+
+/* Decorative circle */
+
+.cr-form-grid::after {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  right: -150px;
+  bottom: -160px;
+
+  border: 1px solid rgba(201, 163, 90, 0.16);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+/* Individual fields */
+
+.cr-field {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+/* Full width fields */
+
+.cr-field-full {
+  grid-column: 1 / -1;
+}
+
+/* Labels */
+
+.cr-field label {
+  font-size: 0.69rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color: var(--forest);
+}
+
+/* Inputs */
+
+.cr-field input,
+.cr-field select,
+.cr-field textarea {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding: 14px 16px;
+
+  border: 1px solid rgba(20, 34, 31, 0.12);
+
+  border-radius: 12px;
+
+  background: #fcfaf7;
+
+  color: var(--ink);
+
+  font-size: 0.96rem;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Placeholder */
+
+.cr-field input::placeholder,
+.cr-field textarea::placeholder {
+  color: rgba(92, 107, 102, 0.62);
+}
+
+/* Select */
+
+.cr-field select {
+  appearance: none;
+
+  cursor: pointer;
+
+  background-color: #fcfaf7;
+
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent 50%,
+      var(--forest) 50%
+    ),
+    linear-gradient(
+      135deg,
+      var(--forest) 50%,
+      transparent 50%
+    );
+
+  background-position:
+    calc(100% - 20px) 22px,
+    calc(100% - 15px) 22px;
+
+  background-size:
+    5px 5px,
+    5px 5px;
+
+  background-repeat: no-repeat;
+}
+
+/* Textarea */
+
+.cr-field textarea {
+  min-height: 145px;
+
+  resize: vertical;
+
+  line-height: 1.6;
+}
+
+/* Focus state */
+
+.cr-field input:focus,
+.cr-field select:focus,
+.cr-field textarea:focus {
+  outline: none;
+
+  background: var(--white);
+
+  border-color: var(--gold);
+
+  box-shadow:
+    0 0 0 4px rgba(201, 163, 90, 0.1),
+    0 8px 24px rgba(20, 34, 31, 0.05);
+
+  transform: translateY(-1px);
+}
+
+/* Invalid fields */
+
+.cr-field input[aria-invalid="true"],
+.cr-field select[aria-invalid="true"],
+.cr-field textarea[aria-invalid="true"] {
+  border-color: var(--clay);
+
+  box-shadow:
+    0 0 0 3px rgba(196, 92, 38, 0.08);
+}
+
+/* Error */
+
+.cr-error {
+  margin-top: -2px;
+
+  font-size: 0.76rem;
+
+  font-weight: 600;
+
+  color: var(--clay);
+}
+
+/* Submit button */
+
+.cr-submit {
+  position: relative;
+
+  margin-top: 10px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  min-width: 190px;
+
+  padding: 15px 24px;
+
+  border: 1px solid var(--forest);
+
+  border-radius: 999px;
+
+  background: var(--forest);
+
+  color: var(--sand);
+
+  font-size: 0.78rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 24px rgba(20, 34, 31, 0.16);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* Submit hover */
+
+.cr-submit:hover {
+  transform: translateY(-3px);
+
+  background: var(--clay);
+
+  border-color: var(--clay);
+
+  box-shadow:
+    0 16px 30px rgba(20, 34, 31, 0.18);
+}
+
+/* Submit active */
+
+.cr-submit:active {
+  transform: translateY(-1px);
+}
+
+/* Arrow */
+
+.cr-arrow {
+  display: inline-block;
+
+  font-size: 1rem;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.cr-submit:hover .cr-arrow {
+  transform: translateX(6px);
+}
+
+/* Success message */
+
+.cr-success {
+  position: relative;
+
+  padding: 40px;
+
+  max-width: 680px;
+
+  background: var(--white);
+
+  border: 1px solid rgba(201, 163, 90, 0.35);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 24px 60px rgba(20, 34, 31, 0.08);
+}
+
+.cr-success::before {
+  content: "✓";
+
+  display: grid;
+
+  place-items: center;
+
+  width: 48px;
+  height: 48px;
+
+  margin-bottom: 20px;
+
+  border-radius: 50%;
+
+  background: var(--forest);
+
+  color: var(--gold);
+
+  font-size: 1.2rem;
+
+  font-weight: 800;
+}
+
+.cr-success p {
+  color: var(--forest);
+
+  line-height: 1.6;
+}
+
+.cr-success p + p {
+  margin-top: 8px;
+
+  color: var(--muted);
+}
+
+/* =========================================
    TABLET
    ========================================= */
 
@@ -1390,12 +2201,35 @@ h2 {
 
   .mandate-step {
     grid-template-columns: 70px 1fr;
+
     gap: 22px;
+
     padding: 30px;
   }
 
   .mandate-mistakes {
     grid-template-columns: 1fr;
+  }
+
+  /* Coming Soon */
+
+  .cs-art-wrap {
+    width: min(60vw, 420px);
+
+    right: -8vw;
+
+    opacity: 0.4;
+  }
+
+  .cs-hero-copy {
+    max-width: 620px;
+  }
+
+  /* Careers form */
+
+  .cr-form-section {
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 }
 
@@ -1408,16 +2242,27 @@ h2 {
     display: block;
   }
 
+  .logo .company-logo {
+    width: 145px;
+    height: 50px;
+  }
   .topbar nav {
     display: none;
+
     position: absolute;
+
     top: 64px;
     left: 0;
     right: 0;
+
     flex-direction: column;
+
     align-items: flex-start;
+
     padding: 16px 6vw 24px;
+
     background: var(--paper);
+
     border-bottom: 1px solid var(--line);
   }
 
@@ -1442,12 +2287,19 @@ h2 {
 
   .drop .mega {
     position: static;
+
     opacity: 1;
+
     transform: none;
+
     pointer-events: auto;
+
     box-shadow: none;
+
     border: 0;
+
     padding: 8px 0 0 12px;
+
     background: transparent;
   }
 
@@ -1459,7 +2311,9 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  /* Mandate mobile */
+  /* =========================================
+     MANDATE MOBILE
+     ========================================= */
 
   .mandate-container {
     width: 88vw;
@@ -1467,6 +2321,7 @@ h2 {
 
   .mandate-hero {
     min-height: 65vh;
+
     padding: 90px 0 65px;
   }
 
@@ -1493,7 +2348,9 @@ h2 {
 
   .mandate-step {
     grid-template-columns: 1fr;
+
     gap: 20px;
+
     padding: 25px;
   }
 
@@ -1533,16 +2390,145 @@ h2 {
   .mandate-final h2 {
     font-size: 2.2rem;
   }
-  .company-address {
-  margin-top: 28px;
+
+  /* =========================================
+     COMING SOON MOBILE
+     ========================================= */
+
+  .cs-hero {
+    min-height: 100vh;
+
+    padding: 16vh 6vw 8vh;
+
+    align-items: flex-start;
+  }
+
+  .cs-art-wrap {
+    width: 78vw;
+
+    right: -18vw;
+
+    top: 18%;
+
+    transform: none;
+
+    opacity: 0.22;
+  }
+
+  .cs-hero-copy {
+    max-width: 100%;
+  }
+
+  .cs-title {
+    font-size: clamp(2.6rem, 15vw, 4.2rem);
+  }
+
+  .cs-soon {
+    gap: 10px;
+  }
+
+  .cs-soon-line {
+    width: 26px;
+  }
+
+  .cs-soon-text {
+    font-size: 0.72rem;
+
+    letter-spacing: 0.2em;
+  }
+
+  .cs-desc {
+    font-size: 0.95rem;
+  }
+
+  .cs-transition {
+    padding-bottom: 45px;
+  }
+
+  .cs-transition p {
+    font-size: 0.68rem;
+
+    line-height: 1.6;
+  }
+
+  /* =========================================
+     CAREERS FORM MOBILE
+     ========================================= */
+
+  .cr-form-section {
+    padding: 64px 5vw 80px;
+  }
+
+  .cr-form-grid {
+    grid-template-columns: 1fr;
+
+    row-gap: 20px;
+
+    padding: 28px 22px 32px;
+
+    border-radius: 20px;
+  }
+
+  .cr-field-full {
+    grid-column: auto;
+  }
+
+  .cr-field input,
+  .cr-field select,
+  .cr-field textarea {
+    min-height: 50px;
+
+    padding: 13px 14px;
+  }
+
+  .cr-field textarea {
+    min-height: 130px;
+  }
+
+  .cr-submit {
+    width: 100%;
+
+    min-width: 0;
+
+    margin-top: 8px;
+  }
+
+  .cr-success {
+    padding: 30px 24px;
+
+    border-radius: 18px;
+  }
 }
 
-.company-address h3 {
-  margin-bottom: 8px;
-}
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
 
-.company-address p {
-  line-height: 1.7;
-  margin: 0;
-}
+@media (prefers-reduced-motion: reduce) {
+  .cs-skyline rect,
+  .cs-wave,
+  .cs-node,
+  .cs-dot,
+  .cs-float,
+  .cs-soon-line {
+    animation: none !important;
+  }
+
+  .cs-skyline rect {
+    opacity: 1;
+
+    transform: none;
+  }
+
+  .cs-wave {
+    stroke-dashoffset: 0;
+  }
+
+  .cs-node {
+    opacity: 1;
+  }
+
+  .cs-soon-line {
+    transform: scaleX(1);
+  }
 }

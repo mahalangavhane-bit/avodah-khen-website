@@ -6,12 +6,6 @@ const awards = [
   "Best Independent Research Desk — Mid-India",
 ];
 
-const films = [
-  { title: "Street Talk, Ep. 12", text: "Why shade is now a line item on every term sheet." },
-  { title: "Walk the Plot", text: "A 14-minute film from a Kochi retrofit that kept 80% of the frame." },
-  { title: "Boardroom Brief", text: "How funds are pricing flood history into suburban land." },
-];
-
 const news = [
   "Velora maps 40 heat-risk pockets across six cities",
   "Partnership with municipal boards on open-data shade canopies",
@@ -33,18 +27,6 @@ export default function Media() {
             <h2>{item}</h2>
           </article>
         ))}
-      </section>
-      <section id="podcasts" className="block tight">
-        <h2 className="reveal">Podcasts & films</h2>
-        <div className="idea-grid">
-          {films.map((f, i) => (
-            <article key={f.title} className="reveal" style={{ transitionDelay: `${i * 80}ms` }}>
-              <span>Watch / listen</span>
-              <h3>{f.title}</h3>
-              <p>{f.text}</p>
-            </article>
-          ))}
-        </div>
       </section>
       <section id="news" className="block tight">
         <h2 className="reveal">In the news</h2>

@@ -9,6 +9,9 @@ import Media from "./pages/Media.jsx";
 import Company from "./pages/Company.jsx";
 import Contact from "./pages/Contact.jsx";
 import Mandate from "./pages/Mandate.jsx";
+import Proptech from "./pages/Proptech.jsx";
+import Fintech from "./pages/Fintech.jsx";
+import Careers from "./pages/Careers.jsx";
 
 const pages = {
   "/": Home,
@@ -18,6 +21,9 @@ const pages = {
   "/company": Company,
   "/contact": Contact,
   "/mandate": Mandate,
+  "/proptech": Proptech,
+  "/fintech": Fintech,
+  "/careers": Careers,
 };
 
 const searchIndex = [

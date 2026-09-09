@@ -16,8 +16,7 @@ export default function Contact() {
         </h1>
 
         <p className="lede anim-3">
-          Studios in Mumbai, Bengaluru, Hyderabad, Ahmedabad, Jaipur, Kochi —
-          plus desks in Dubai and Lisbon.
+          Studios in Mumbai.
         </p>
       </header>
 
