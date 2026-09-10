@@ -1,4 +1,4 @@
-import ComingSoon from "./ComingSoon.jsx";
+import ComingSoon from "./Comingsoon.jsx";
 
 export default function Proptech() {
   return (
