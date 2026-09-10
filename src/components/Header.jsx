@@ -27,25 +27,43 @@ const menus = {
 
 export default function Header({ onSearch }) {
   const [open, setOpen] = useState(false);
-  const [hover, setHover] = useState(null);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [activeItem, setActiveItem] = useState(null);
 
   useEffect(() => {
-    const close = () => setOpen(false);
+    const close = () => {
+      setOpen(false);
+      setActiveMenu(null);
+    };
+
     window.addEventListener("hashchange", close);
 
     return () => window.removeEventListener("hashchange", close);
   }, []);
 
+  const handleMenuClick = (key, e) => {
+    e.preventDefault();
+
+    setActiveItem(null);
+
+    setActiveMenu((current) =>
+      current === key ? null : key
+    );
+  };
+
   return (
     <header className="topbar">
-    <NavLink className="logo" to="/">
-      <img
-        src={logo}
-        alt="AVODAH & KHEN LLP"
-        className="company-logo"
-      />
-    </NavLink>
 
+      {/* Logo */}
+      <NavLink className="logo" to="/">
+        <img
+          src={logo}
+          alt="AVODAH & KHEN LLP"
+          className="company-logo"
+        />
+      </NavLink>
+
+      {/* Mobile Menu */}
       <button
         className="menu-btn"
         onClick={() => setOpen((v) => !v)}
@@ -54,45 +72,69 @@ export default function Header({ onSearch }) {
       </button>
 
       <nav className={open ? "open" : ""}>
+
         {Object.entries(menus).map(([key, items]) => (
           <div
-            className="drop"
+            className={
+              activeMenu === key
+                ? "drop active"
+                : "drop"
+            }
             key={key}
-            onMouseEnter={() => setHover(key)}
-            onMouseLeave={() => setHover(null)}
           >
+
+            {/* Main Navbar Item */}
             <NavLink
               to={`/${key}`}
-              onClick={() => setOpen(false)}
+              onClick={(e) => handleMenuClick(key, e)}
             >
               {key[0].toUpperCase() + key.slice(1)}
             </NavLink>
 
+            {/* Dropdown */}
             <div
               className={
-                hover === key ? "mega show" : "mega"
+                activeMenu === key
+                  ? "mega show"
+                  : "mega"
               }
             >
               {items.map((item) => (
                 <NavLink
                   key={item.label}
                   to={item.to}
-                  onClick={() => setOpen(false)}
+                  className={
+                    activeItem === item.label
+                      ? "active-item"
+                      : ""
+                  }
+                  onClick={() => {
+                    setActiveItem(item.label);
+                    setActiveMenu(null);
+                    setOpen(false);
+                  }}
                 >
                   {item.label}
                 </NavLink>
               ))}
             </div>
+
           </div>
         ))}
 
+        {/* Contact */}
         <NavLink
           className="nav-cta"
           to="/contact"
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            setActiveMenu(null);
+            setActiveItem(null);
+            setOpen(false);
+          }}
         >
           Contact
         </NavLink>
+
       </nav>
     </header>
   );

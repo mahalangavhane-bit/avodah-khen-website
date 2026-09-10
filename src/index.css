@@ -62,7 +62,8 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 6vw;
+  padding: 5px 3vw;
+  min-height: 60px;
   background: rgba(250, 246, 240, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
@@ -73,14 +74,15 @@ select {
   align-items: center;
   flex-shrink: 0;
   text-decoration: none;
+  margin-left: -10px;
 }
 
 .company-logo {
   display: block;
-  width: 78px;
-  height: 78px;
+  width: 75px;
+  height: 75px;
   object-fit: contain;
-  transform: scale(1.8);
+  transform: scale(1.5);
   transform-origin: left center;
 }
 
@@ -103,6 +105,7 @@ select {
 
 .topbar nav a {
   font-size: 0.95rem;
+  font-weight: 600;
   color: var(--forest);
 }
 
@@ -500,10 +503,10 @@ h2 {
 
 .foot .footer-logo {
   display: block;
-  width: 130px;
-  height: 130px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
-  margin: -15px 0 0 0;
+  margin: -35px 0 0 -30px;
 }
 
 .foot h4 {
@@ -2530,5 +2533,197 @@ h2 {
 
   .cs-soon-line {
     transform: scaleX(1);
+  }
+  .drop.active > a {
+  color: var(--forest);
+}
+
+  .mega a.active-item {
+  color: var(--forest);
+  font-weight: 600;
+}
+}
+/* =========================================
+   NAVBAR HOVER + ACTIVE
+   ========================================= */
+
+.drop {
+  position: relative;
+}
+
+.drop > a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--forest);
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+/* Mouse hover */
+.drop > a:hover {
+  color: var(--clay);
+  background: rgba(201, 163, 90, 0.14);
+}
+
+/* Clicked menu */
+.drop.active > a {
+  color: var(--clay);
+  background: rgba(201, 163, 90, 0.18);
+  font-weight: 700;
+}
+
+/* Dropdown */
+.mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  padding: 12px 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(20, 34, 31, 0.12);
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Open dropdown */
+.mega.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Dropdown links */
+.mega a {
+  display: block;
+  padding: 10px 16px;
+  color: var(--forest);
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+/* Dropdown hover */
+.mega a:hover {
+  color: var(--clay);
+  background: rgba(201, 163, 90, 0.12);
+}
+
+/* Clicked dropdown item */
+.mega a.active-item {
+  color: var(--clay);
+  background: rgba(201, 163, 90, 0.16);
+  font-weight: 700;
+}
+/* =========================================
+   FOOTER LINK HOVER
+   ========================================= */
+
+.foot a {
+  color: rgba(243, 235, 225, 0.72);
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.foot a:hover {
+  color: #e3b089;
+  transform: translateX(4px);
+}
+/* CONTACT SOCIAL ICONS */
+
+.contact-social-wrapper {
+  position: relative;
+  overflow: visible;
+}
+
+.contact-socials {
+  position: absolute;
+  right: -75px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 20;
+}
+
+.contact-social {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  font-size: 25px;
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.contact-social.whatsapp {
+  color: #25d366;
+}
+
+.contact-social.instagram {
+  color: #e4405f;
+}
+
+.contact-social.linkedin {
+  color: #0a66c2;
+}
+
+.contact-social:hover {
+  transform: translateX(6px);
+  box-shadow: 0 8px 22px rgba(20, 34, 31, 0.16);
+}
+
+/* TABLET */
+@media (max-width: 1100px) {
+  .contact-socials {
+    right: -60px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-socials {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    z-index: 999;
+  }
+
+  .contact-social {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+
+  .contact-social:hover {
+    transform: translateX(-4px);
   }
 }

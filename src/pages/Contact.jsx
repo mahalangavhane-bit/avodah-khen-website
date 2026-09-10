@@ -1,6 +1,11 @@
 
 import { useState } from "react";
 import useReveal from "../hooks/useReveal.js";
+import {
+  FaWhatsapp,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 export default function Contact() {
   useReveal();
@@ -20,7 +25,7 @@ export default function Contact() {
         </p>
       </header>
 
-      <section className="contact page-form">
+      <section className="contact page-form contact-social-wrapper">
         <div className="reveal">
           <h2>Request a briefing</h2>
 
@@ -83,6 +88,37 @@ export default function Contact() {
             </button>
           </form>
         )}
+         <div className="contact-socials">
+          <a
+            href="https://wa.me/919657456931"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+          className="contact-social whatsapp"
+        >
+        <FaWhatsapp />
+      </a>
+
+        <a
+          href="https://www.instagram.com/mahalangavhane?stkn=MW40bDNvOWl6MWNhaQ=="
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          className="contact-social instagram"
+      >
+        <FaInstagram />
+    </a>
+
+    <a
+      href="https://www.linkedin.com/in/mahalangavhane/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn"
+      className="contact-social linkedin"
+    >
+    <FaLinkedinIn />
+  </a>
+  </div>
       </section>
     </main>
   );
