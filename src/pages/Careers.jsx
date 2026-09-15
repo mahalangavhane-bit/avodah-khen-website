@@ -16,6 +16,9 @@ const INITIAL_FORM = {
 const PHONE_RE = /^(\+91[-\s]?)?[6-9]\d{9}$/;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbyNDSRIiRGf9tMN1d0CtUWatZb0-1vnSEXcs4TSnQA2Z4Vk_wfcqTqy71iynhSrpeObVw/exec";
+
 function validate(form) {
   const errors = {};
 
@@ -80,15 +83,38 @@ export default function Careers() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const nextErrors = validate(form);
 
     setErrors(nextErrors);
 
-    if (Object.keys(nextErrors).length === 0) {
+    if (Object.keys(nextErrors).length !== 0) {
+      return;
+    }
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+          type: "career",
+          firstName: form.firstName,
+          lastName: form.lastName,
+          phone: form.phone,
+          email: form.email,
+          department: form.department,
+          jobTitle: form.jobTitle,
+          message: form.message,
+        }),
+      });
+
       setSubmitted(true);
+      setForm(INITIAL_FORM);
+    } catch (error) {
+      console.error("Application submission failed:", error);
+      alert("Something went wrong. Please try again.");
     }
   };
 
@@ -396,6 +422,7 @@ export default function Careers() {
                 type="submit"
               >
                 <span>Submit Application</span>
+
                 <span
                   className="cr-arrow"
                   aria-hidden="true"

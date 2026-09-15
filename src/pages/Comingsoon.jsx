@@ -8,8 +8,6 @@ export default function ComingSoon({
   title,
   quote,
   description,
-  ctaLabel,
-  ctaTo,
 }) {
   useReveal();
 
@@ -47,15 +45,6 @@ export default function ComingSoon({
           <p className="cs-desc anim-4">
             {description}
           </p>
-
-          <div className="actions anim-4">
-            <NavLink
-              className="btn primary"
-              to={ctaTo}
-            >
-              {ctaLabel}
-            </NavLink>
-          </div>
         </div>
       </section>
 

@@ -105,7 +105,7 @@ select {
 
 .topbar nav a {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--forest);
 }
 
@@ -687,7 +687,7 @@ h2 {
 }
 
 .page-hero {
-  padding: 72px 6vw 24px;
+  padding: 48px 6vw 28px;
 }
 
 .page-hero .lede {
@@ -1170,18 +1170,28 @@ h2 {
 }
 
 .mandate-notes {
-  display: grid;
-  gap: 8px;
+  display: block;
   margin-top: 22px;
-  padding: 18px 20px;
-  background: var(--sand);
-  border-radius: 12px;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 .mandate-notes p {
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.6;
+}
+
+.mandate-notes strong {
+  color: var(--forest);
+  font-weight: 700;
 }
 
 /* =========================================
@@ -2286,24 +2296,28 @@ h2 {
 
   .hero {
     min-height: 78vh;
+    padding: 8vw 6vw 16vh;
   }
 
   .drop .mega {
     position: static;
-
+    min-width: 0;
+    display: none;
     opacity: 1;
-
     transform: none;
-
-    pointer-events: auto;
-
+    pointer-events: none;
     box-shadow: none;
-
     border: 0;
-
+    border-radius: 0;
     padding: 8px 0 0 12px;
-
     background: transparent;
+  }
+
+  .drop .mega.show {
+    display: grid;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
   }
 
   .marquee {
@@ -2323,9 +2337,9 @@ h2 {
   }
 
   .mandate-hero {
-    min-height: 65vh;
-
-    padding: 90px 0 65px;
+    min-height: 48vh;
+    padding: 65px 0 45px;
+    align-items: center;
   }
 
   .mandate-hero h1 {
@@ -2393,17 +2407,15 @@ h2 {
   .mandate-final h2 {
     font-size: 2.2rem;
   }
-
   /* =========================================
      COMING SOON MOBILE
      ========================================= */
 
   .cs-hero {
-    min-height: 100vh;
-
-    padding: 16vh 6vw 8vh;
-
-    align-items: flex-start;
+    min-height: 72vh;
+    padding: 9vh 6vw 7vh;
+    align-items: center;
+    justify-content: center;
   }
 
   .cs-art-wrap {
@@ -2534,14 +2546,6 @@ h2 {
   .cs-soon-line {
     transform: scaleX(1);
   }
-  .drop.active > a {
-  color: var(--forest);
-}
-
-  .mega a.active-item {
-  color: var(--forest);
-  font-weight: 600;
-}
 }
 /* =========================================
    NAVBAR HOVER + ACTIVE

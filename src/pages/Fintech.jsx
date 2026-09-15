@@ -9,8 +9,6 @@ export default function Fintech() {
       title="FINTECH"
       quote="&ldquo;Building smarter financial possibilities for the real estate ecosystem.&rdquo;"
       description="Our Fintech offering is being developed to bring technology, financial intelligence and real estate together."
-      ctaLabel="Return to Services"
-      ctaTo="/services"
     />
   );
 }

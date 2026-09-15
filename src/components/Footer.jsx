@@ -17,27 +17,6 @@ export default function Footer() {
           </NavLink>
         </div>
 
-        {/* Services */}
-        <div>
-          <h4>Services</h4>
-
-          <NavLink to="/services">
-            Climate &amp; Resilience
-          </NavLink>
-
-          <NavLink to="/services">
-            Liveable Cities
-          </NavLink>
-
-          <NavLink to="/services">
-            Circular Buildings
-          </NavLink>
-
-          <NavLink to="/services">
-            Mid-India Intelligence
-          </NavLink>
-        </div>
-
         {/* Company */}
         <div>
           <h4>Company</h4>

@@ -9,12 +9,12 @@ const steps = [
     intro:
       "Get Clarity To Attain Our Aommox GOAC. of Branding, Quick Sales At The Best Rates. So we need Clarity On..",
     items: [
+      "Target buyer segment",
       "Total inventory size",
       "Target revenue",
+      "Funding & cash-flow requirement",
       "Launch timeline",
-      "Target buyer segment",
       "Sales cycle expectation",
-      "Funding / cash-flow pressure",
     ],
   },
   {
@@ -23,70 +23,69 @@ const steps = [
     intro:
       "We Ensure That Our Agreement with the Developer Clearly Defines:",
     items: [
-      "Exclusive Clause",
-      "Duration(typically 12-18 months)",
       "Revenue targets",
       "Commission structure",
+      "Exclusive Clause",
       "Marketing responsibilities under brand mandates",
-      "Exit Clause",
+      "Duration",
       "Reporting frequency",
+      "Exit Clause",
     ],
-    notes: ["Legal clarity ensures smooth execution of saled mandate."],
+    notes: ["Legal clarity ensures smooth execution of sales mandate."],
   },
   {
     number: "03",
-    title: "Set Performance KPIs(Key performance Indicators)",
+    title: "Set Performance KPIs (Key Performance Indicators)",
     intro: "We Define measurable KPIs such as:",
     items: [
-      "Monthly booking target",
       "Site visit targets",
+      "Monthly booking targets",
+      "Channel partner activation numbers",
       "Conversion ratios",
       "Inventory absorption rate",
-      "Channel partner activation numbers",
       "Revenue milestone tracking",
     ],
   },
   {
     number: "04",
     title: "Sales",
-    intro: "For maximum impact: We ensurers that...",
+    intro: "For maximum impact: We ensure that...",
     items: [
-      "Branding must be unified",
-      "Compaigns must align with pricing",
       "Digital marketing must support on-ground sales",
+      "Branding must be unified",
       "Messaging must remain consistent",
       "CRM tracking must be active",
+      "Campaigns must align with pricing",
     ],
-    notes: ["Fragmented marketing weakens mandate effectiveness"],
+    notes: ["A Fragmented marketing weakens mandate effectiveness"],
   },
 ];
 
 const benefits = [
-  "Faster inventory absorption",
-  "Strong pricing discipline",
-  "Structured inventory release",
-  "Unified brand positioning",
-  "Single-point accountability",
-  "Data-driven sales execution",
+  "Unified Brand Positioning",
+  "Strong Pricing Discipline",
+  "Structured Inventory Release",
+  "Data-driven execution",
+  "Single-point Accountability",
+  "Faster Inventory Absorption",
 ];
 
 const whenToAppoint = [
   "New project launch",
   "Pre-launch planning",
-  "Slow-moving inventory",
   "Large township developments",
   "Redevelopment projects",
+  "Slow-moving inventory",
   "Expansion into Mumbai markets",
 ];
 
 const support = [
-  "End-to-end exclusive sales mandates",
+  "Market expertise across Mumbai",
   "Strategic brand-mandate implementation",
+  "End-to-end exclusive sales mandates",
   "Broker ecosystem management",
   "On-site sales deployment",
   "CRM-driven reporting",
-  "Revenue-focused planning",
-  "Market expertise across Mumbai",
 ];
 
 function Mandate() {
@@ -119,9 +118,9 @@ function Mandate() {
               mandates and brand mandates can directly impact your revenue,
               pricing discipline, and inventory absorption.
               <br />
-              At Avodah &amp; Khen we are Backer by 20+ years experience in
-              sales &amp; brand mandates, we support developers across Mumbai,
-              Vasai, Virar and India with structured exclusive mandate models.
+              At Avodah &amp; Khen we are Backed by 20+ years experience in
+              sales &amp; brand mandates, we support developers across Mumbai
+              with structured exclusive mandate models.
             </p>
           </div>
         </div>
@@ -145,19 +144,12 @@ function Mandate() {
             <h3>Our Sole selling model ensures:</h3>
 
             <ul>
-              <li>Centralized pricing Strategy</li>
-              <li>Structured inventory allocation</li>
-              <li>Controlled broker network</li>
-              <li>
-                Unified branding communication under clear brand mandates
-              </li>
+              <li>We give you a Centralized pricing Strategy</li>
+              <li>A Structured inventory allocation</li>
+              <li>A well Established and Controlled broker network</li>
               <li>Transparent reporting</li>
-              <li>Higher accountability</li>
+              <li>A deal and perfect accountability</li>
             </ul>
-
-            <p>
-              Strategic execution of <strong>Sales mandate</strong>
-            </p>
           </div>
         </div>
       </section>
@@ -169,7 +161,7 @@ function Mandate() {
             <span className="mandate-label">STEP-BY-STEP GUIDE</span>
 
             <h2>
-              While Appointing Us As Your Sole Selling Partner, You Need To
+              While Appointing Us As Your Sole Selling Partner, You Need To...
             </h2>
           </div>
 
@@ -194,7 +186,9 @@ function Mandate() {
                   {step.notes && (
                     <div className="mandate-notes">
                       {step.notes.map((note) => (
-                        <p key={note}>{note}</p>
+                        <p key={note}>
+                          <strong>Note: </strong>{note}
+                        </p>
                       ))}
                     </div>
                   )}

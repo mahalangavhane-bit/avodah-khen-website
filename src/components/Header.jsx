@@ -4,7 +4,6 @@ import logo from "../assets/avodah-khen-logo.png";
 
 const menus = {
   services: [
-    { to: "/services", label: "All services" },
     { to: "/mandate", label: "Mandate" },
     { to: "/proptech", label: "Proptech" },
     { to: "/fintech", label: "Fintech" },

@@ -68,16 +68,11 @@ export default function Home() {
       <section className="hero">
         <div className="hero-kenburns" />
         <div className="hero-copy">
-          <p className="eyebrow anim-1">Advisory for every stage of a warmer city</p>
-          <h1 className="anim-2">Real estate that still works when the climate does not.</h1>
+          <p className="eyebrow anim-1">REAL ESTATE. REIMAGINED WITH PROPTECH</p>
+          <h1 className="anim-2">Technology-driven solutions. Transforming the way real estate moves</h1>
           <p className="lede anim-3">
-            Velora is an independent advisory for developers, funds and cities that want liveable
-            neighbourhoods — cooler streets, circular buildings and honest market intelligence.
+           We combine real estate expertise with technology to make buying, selling and investing in property simpler, smarter and more transparent.
           </p>
-          <div className="actions anim-4">
-            <NavLink className="btn primary" to="/services">Discover our services</NavLink>
-            <NavLink className="btn ghost" to="/research">Read the latest brief</NavLink>
-          </div>
         </div>
         <div className="scroll-cue">Scroll</div>
       </section>
@@ -102,35 +97,6 @@ export default function Home() {
             <p>{text}</p>
           </article>
         ))}
-      </section>
-
-      <section className="block">
-        <p className="kicker reveal">Our services</p>
-        <h2 className="reveal">Integrated solutions for a changing landscape</h2>
-        <div className="tabs reveal">
-          {Object.entries(services).map(([key, s]) => (
-            <button
-              key={key}
-              className={active === key ? "tab on" : "tab"}
-              onClick={() => setActive(key)}
-            >
-              {s.label}
-            </button>
-          ))}
-        </div>
-        <div className="service-panel reveal" key={active}>
-          <div className="fade-swap">
-            <h3>{current.title}</h3>
-            <p>{current.text}</p>
-            <ul>
-              {current.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <NavLink className="text-link" to="/services">Explore all services</NavLink>
-          </div>
-          <div className="service-visual" aria-hidden="true" />
-        </div>
       </section>
 
       <section className="stats">

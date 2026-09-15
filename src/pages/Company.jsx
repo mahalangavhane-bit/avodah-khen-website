@@ -43,11 +43,6 @@ export default function Company() {
           Shade scholarships for municipal interns, open heat maps for three city corporations, and a materials reuse yard in Palghar that keeps demolition waste in circulation.
         </p>
       </section>
-      <section id="careers" className="block tight reveal">
-        <h2>Careers</h2>
-        <p>We hire people who can walk a plot in May and still write a clear note by evening.</p>
-        <NavLink className="btn primary" to="/contact">Send a note</NavLink>
-      </section>
     </main>
   );
 }
