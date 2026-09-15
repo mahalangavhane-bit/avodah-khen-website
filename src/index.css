@@ -2731,80 +2731,182 @@ h2 {
     transform: translateX(-4px);
   }
 }
+/* =========================================================
+   FINAL MOBILE RESPONSIVE FIX
+   ========================================================= */
 
-/* =========================================
-   MANDATE — HOMEPAGE STYLE SCROLL REVEAL
-   ========================================= */
+@media (max-width: 900px) {
+  /* Keep the mobile navigation active on phones and small tablets */
+  .menu-btn {
+    display: block;
+  }
 
-.mandate-page .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-}
+  .topbar nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 16px 6vw 24px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
 
-.mandate-page .reveal.in {
-  opacity: 1;
-  transform: none;
-}
+  .topbar nav.open {
+    display: flex;
+  }
 
-/* Step cards stagger */
-.mandate-page .mandate-step:nth-child(1) {
-  transition-delay: 0.05s;
-}
+  .topbar nav a {
+    width: 100%;
+  }
 
-.mandate-page .mandate-step:nth-child(2) {
-  transition-delay: 0.12s;
-}
+  /* Homepage hero */
+  .hero {
+    min-height: calc(100svh - 60px);
+    padding: 8vh 6vw 10vh;
+    align-items: center;
+  }
 
-.mandate-page .mandate-step:nth-child(3) {
-  transition-delay: 0.19s;
-}
+  .hero-copy {
+    max-width: 100%;
+  }
 
-.mandate-page .mandate-step:nth-child(4) {
-  transition-delay: 0.26s;
-}
+  .hero-kenburns {
+    inset: -4%;
+  }
 
-/* Cards stagger */
-.mandate-page .mandate-card:nth-child(1) {
-  transition-delay: 0.05s;
-}
+  h1 {
+    font-size: clamp(2.35rem, 10vw, 4rem);
+    line-height: 1.04;
+  }
 
-.mandate-page .mandate-card:nth-child(2) {
-  transition-delay: 0.10s;
-}
+  .lede {
+    font-size: 0.98rem;
+  }
 
-.mandate-page .mandate-card:nth-child(3) {
-  transition-delay: 0.15s;
-}
+  /* Coming Soon pages: Proptech / Fintech */
+  .cs-hero {
+    min-height: calc(100svh - 60px);
+    padding: 8vh 6vw;
+    align-items: center;
+    justify-content: center;
+  }
 
-.mandate-page .mandate-card:nth-child(4) {
-  transition-delay: 0.20s;
-}
+  .cs-hero-copy {
+    max-width: 100%;
+  }
 
-.mandate-page .mandate-card:nth-child(5) {
-  transition-delay: 0.25s;
-}
+  .cs-title {
+    font-size: clamp(2.6rem, 15vw, 4.2rem);
+    line-height: 0.96;
+  }
 
-.mandate-page .mandate-card:nth-child(6) {
-  transition-delay: 0.30s;
-}
-
-/* Comparison columns */
-.mandate-page .comparison-column:nth-child(1) {
-  transition-delay: 0.08s;
-}
-
-.mandate-page .comparison-column:nth-child(2) {
-  transition-delay: 0.18s;
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .mandate-page .reveal {
-    opacity: 1;
+  .cs-art-wrap {
+    width: 78vw;
+    right: -18vw;
+    top: 18%;
     transform: none;
-    transition: none;
+    opacity: 0.22;
+  }
+
+  /* Mandate hero */
+  .mandate-hero {
+    min-height: calc(100svh - 60px);
+    padding: 65px 0 45px;
+    align-items: center;
+  }
+
+  .mandate-hero h1 {
+    font-size: clamp(2.4rem, 12vw, 3.5rem);
+  }
+
+  /* Careers hero */
+  .cr-hero {
+    min-height: calc(100svh - 60px);
+    padding: 8vh 6vw;
+    align-items: center;
+  }
+
+  .cr-hero-copy {
+    max-width: 100%;
+  }
+
+  /* Prevent oversized page sections on narrow screens */
+  .block,
+  .stats,
+  .contact {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+  /* Footer */
+  .foot-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Extra-small phone refinement */
+  .topbar {
+    min-height: 60px;
+    padding: 5px 4vw;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .logo .company-logo {
+    width: 120px;
+    height: 50px;
+    transform: none;
+    object-fit: contain;
+  }
+
+  .menu-btn {
+    padding: 8px 11px;
+  }
+
+  .hero {
+    min-height: calc(100svh - 60px);
+    padding: 7vh 6vw 9vh;
+  }
+
+  .hero-kenburns {
+    inset: -2%;
+    animation: none;
+  }
+
+  .scroll-cue {
+    right: 6vw;
+    bottom: 20px;
+  }
+
+  .cs-hero {
+    min-height: calc(100svh - 60px);
+    padding: 7vh 6vw;
+  }
+
+  .cs-art-wrap {
+    width: 76vw;
+    right: -20vw;
+    top: 16%;
+    opacity: 0.18;
+  }
+
+  .cs-title {
+    font-size: clamp(2.55rem, 14vw, 4rem);
+  }
+
+  .mandate-hero {
+    min-height: calc(100svh - 60px);
+  }
+
+  .cr-hero {
+    min-height: calc(100svh - 60px);
+    padding: 7vh 6vw;
   }
 }
