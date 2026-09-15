@@ -2910,3 +2910,287 @@ h2 {
     padding: 7vh 6vw;
   }
 }
+/* =========================================================
+   FINAL MOBILE HERO FIX
+   IMPORTANT:
+   Desktop remains completely unchanged.
+   Only mobile/tablet hero sections are modified.
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+  /* =====================================================
+     1. HOMEPAGE HERO
+     ===================================================== */
+
+  .hero {
+    min-height: 62svh;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+
+    padding: 60px 6vw 60px;
+
+    position: relative;
+  }
+
+  .hero-kenburns {
+    inset: 0;
+    background-position: center center;
+    animation: none;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 12px;
+    font-size: 0.68rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.15rem, 9.5vw, 3.2rem);
+    line-height: 1.04;
+  }
+
+  .hero .lede {
+    margin-top: 14px;
+    max-width: 48ch;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .hero .actions {
+    margin-top: 22px;
+  }
+
+  .scroll-cue {
+    right: 6vw;
+    bottom: 18px;
+    font-size: 0.62rem;
+  }
+
+
+  /* =====================================================
+     2. MANDATE HERO
+     "Why Should You Appoint Us..."
+     ===================================================== */
+
+  .mandate-hero {
+    min-height: 52svh;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+
+    padding: 60px 0;
+  }
+
+  .mandate-hero .mandate-container {
+    width: 88vw;
+  }
+
+  .mandate-eyebrow {
+    margin-bottom: 14px;
+    font-size: 0.68rem;
+  }
+
+  .mandate-hero h1 {
+    max-width: 100%;
+
+    font-size: clamp(2.15rem, 10vw, 3.2rem);
+    line-height: 1.05;
+  }
+
+  .mandate-hero-text {
+    max-width: 100%;
+    margin-top: 18px;
+
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Keep decorative circles inside the shorter hero */
+  .mandate-hero::before {
+    width: 300px;
+    height: 300px;
+
+    right: -140px;
+    top: -100px;
+  }
+
+  .mandate-hero::after {
+    width: 180px;
+    height: 180px;
+
+    left: -80px;
+    bottom: -90px;
+  }
+
+
+  /* =====================================================
+     3. PROPTECH / FINTECH COMING SOON HERO
+     ===================================================== */
+
+  .cs-hero {
+    min-height: 68svh;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 6vw;
+  }
+
+  .cs-hero-copy {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .cs-art-wrap {
+    width: 72vw;
+
+    right: -20vw;
+    top: 10%;
+
+    transform: none;
+
+    opacity: 0.16;
+  }
+
+  .cs-badge {
+    margin-bottom: 16px;
+    padding: 6px 13px;
+
+    font-size: 0.65rem;
+  }
+
+  .cs-title {
+    margin-bottom: 16px;
+
+    font-size: clamp(2.55rem, 14vw, 4rem);
+    line-height: 0.95;
+  }
+
+  .cs-soon {
+    gap: 9px;
+    margin-bottom: 20px;
+  }
+
+  .cs-soon-text {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+  }
+
+  .cs-soon-line {
+    width: 22px;
+  }
+
+  .cs-quote {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .cs-desc {
+    margin-top: 11px;
+
+    max-width: 48ch;
+
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .cs-hero .actions {
+    margin-top: 22px;
+  }
+
+
+  /* =====================================================
+     4. CAREERS HERO
+     ===================================================== */
+
+  .cr-hero {
+    min-height: 58svh;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+
+    padding: 70px 6vw;
+  }
+
+  .cr-hero-copy {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  /* Homepage */
+  .hero {
+    min-height: 60svh;
+    padding: 55px 6vw;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 9.5vw, 2.8rem);
+  }
+
+  .hero .lede {
+    font-size: 0.88rem;
+  }
+
+
+  /* Mandate */
+  .mandate-hero {
+    min-height: 50svh;
+    padding: 55px 0;
+  }
+
+  .mandate-hero h1 {
+    font-size: clamp(2rem, 10vw, 2.9rem);
+  }
+
+  .mandate-hero-text {
+    font-size: 0.88rem;
+  }
+
+
+  /* PropTech / FinTech */
+  .cs-hero {
+    min-height: 64svh;
+    padding: 60px 6vw;
+  }
+
+  .cs-title {
+    font-size: clamp(2.4rem, 14vw, 3.5rem);
+  }
+
+  .cs-quote {
+    font-size: 0.84rem;
+  }
+
+  .cs-desc {
+    font-size: 0.84rem;
+  }
+
+
+  /* Careers */
+  .cr-hero {
+    min-height: 54svh;
+    padding: 60px 6vw;
+  }
+}
