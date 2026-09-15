@@ -1,5 +1,6 @@
 
 import React from "react";
+import useReveal from "../hooks/useReveal.js";
 
 const steps = [
   {
@@ -89,25 +90,29 @@ const support = [
 ];
 
 function Mandate() {
+  useReveal();
+
   return (
     <main className="mandate-page">
 
       {/* HERO */}
       <section className="mandate-hero">
         <div className="mandate-container">
-          <span className="mandate-eyebrow">AVODAH &amp; KHEN LLP</span>
+        <span className="mandate-eyebrow anim-1">
+          AVODAH &amp; KHEN LLP
+        </span>
 
-          <h1>
-            Why Should You Appoint Us As Your Sole Selling Partner
-            <span> for Your Project</span>
-          </h1>
-        </div>
-      </section>
+        <h1 className="anim-2">
+          Why Should You Appoint Us As Your Sole Selling Partner
+          <span> for Your Project</span>
+        </h1>
+      </div>
+    </section>
 
       {/* INTRODUCTION */}
       <section className="mandate-section">
         <div className="mandate-container">
-          <div className="mandate-intro">
+          <div className="mandate-intro reveal">
             <span className="mandate-label">SOLE SELLING PARTNER</span>
 
             <h2>Step-By-Step Guide For Developers In India</h2>
@@ -129,12 +134,12 @@ function Mandate() {
       {/* WHAT IS A SOLE SELLING PARTNER */}
       <section className="mandate-section mandate-light">
         <div className="mandate-container">
-          <div className="mandate-heading">
+          <div className="mandate-heading reveal">
             <span className="mandate-label">UNDERSTANDING THE MODEL</span>
             <h2>What is a Sole Selling Partner?</h2>
           </div>
 
-          <div className="mandate-definition">
+          <div className="mandate-definition reveal">
             <p>
               A Sole Selling Partner is appointed under an exclusive sales
               mandate agreement to manage the complete sales lifecycle of a
@@ -167,7 +172,7 @@ function Mandate() {
 
           <div className="mandate-steps">
             {steps.map((step) => (
-              <article className="mandate-step" key={step.number}>
+              <article className="mandate-step reveal" key={step.number}>
                 <div className="mandate-step-number">
                   {step.number}
                 </div>
@@ -213,7 +218,7 @@ function Mandate() {
 
           <div className="mandate-grid">
             {benefits.map((benefit, index) => (
-              <div className="mandate-card" key={benefit}>
+              <div className="mandate-card reveal" key={benefit}>
                 <span>
                   {String(index + 1).padStart(2, "0")}
                 </span>
@@ -240,7 +245,7 @@ function Mandate() {
           <div className="mandate-grid">
             {whenToAppoint.map((item) => (
               <div
-                className="mandate-card mandate-card-light"
+                className="mandate-card mandate-card-light reveal"
                 key={item}
               >
                 <h3>{item}</h3>
@@ -263,7 +268,7 @@ function Mandate() {
 
           <div className="mandate-comparison">
 
-            <div className="comparison-column">
+            <div className="comparison-column reveal">
               <h3>
                 Why should you Appoint a Single Sole Selling Partners
               </h3>
@@ -316,7 +321,7 @@ function Mandate() {
 
           <div className="mandate-grid">
             {support.map((item, index) => (
-              <div className="mandate-card" key={item}>
+              <div className="mandate-card reveal" key={item}>
                 <span>
                   {String(index + 1).padStart(2, "0")}
                 </span>
@@ -331,7 +336,7 @@ function Mandate() {
 
       {/* FINAL TAKEAWAY */}
       <section className="mandate-final">
-        <div className="mandate-container">
+        <div className="mandate-container reveal">
 
           <span className="mandate-label">
             FINAL TAKEAWAY
