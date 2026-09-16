@@ -226,6 +226,63 @@ function Mandate() {
           </div>
         </div>
       </section>
+      <section className="mandate-section mandate-pride">
+        <div className="mandate-container">
+          <div className="mandate-heading reveal">
+            <span className="mandate-label">OUR STRENGTH</span>
+            <h2>We Pride Ourselves With...</h2>
+            <p>
+              Our approach is built around experience, accountability,
+              structured execution and a deep understanding of the real estate
+              sales ecosystem.
+            </p>
+          </div>
+
+          <div className="mandate-pride-grid">
+            <div className="mandate-pride-card reveal">
+              <span>01</span>
+              <p>
+                Proven exclusive sales mandate and brand mandates experience
+              </p>
+            </div>
+
+            <div className="mandate-pride-card reveal">
+              <span>02</span>
+              <p>
+               Market expertise in PAN Mumbai.
+              </p>
+            </div>
+
+            <div className="mandate-pride-card reveal">
+              <span>03</span>
+              <p>
+                Dedicated on-ground sales team
+              </p>
+            </div>
+
+            <div className="mandate-pride-card reveal">
+              <span>04</span>
+              <p>
+                CRM & reporting systems
+              </p>
+            </div>
+
+            <div className="mandate-pride-card reveal">
+              <span>05</span>
+              <p>
+                Strong broker network
+              </p>
+            </div>
+
+            <div className="mandate-pride-card reveal">
+              <span>06</span>
+              <p>
+               Developer references
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="mandate-final">
         <div className="mandate-container reveal">
