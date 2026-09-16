@@ -2924,7 +2924,7 @@ h2 {
      ===================================================== */
 
   .hero {
-    min-height: 55svh;
+    min-height: 45svh;
     height: auto;
     display: flex;
     align-items: center;
@@ -2977,7 +2977,7 @@ h2 {
      ===================================================== */
 
   .mandate-hero {
-      min-height: 48svh;
+      min-height: 35svh;
       height: auto;
       display: flex;
       align-items: center;
@@ -3031,7 +3031,7 @@ h2 {
      ===================================================== */
 
   .cs-hero {
-    min-height: 58svh;
+    min-height: 38svh;
     height: auto;
     display: flex;
     align-items: center;
@@ -3108,7 +3108,7 @@ h2 {
      ===================================================== */
 
   .cr-hero {
-    min-height: 52svh;
+    min-height: 42svh;
     height: auto;
     display: flex;
     align-items: center;
@@ -3131,7 +3131,7 @@ h2 {
 
   /* Homepage */
   .hero {
-    min-height: 54svh;
+    min-height: 44svh;
     padding: 50px 6vw;
   }
 
@@ -3146,7 +3146,7 @@ h2 {
 
   /* Mandate */
   .mandate-hero {
-    min-height: 46svh;
+    min-height: 36svh;
     padding: 50px 0;
   }
 
@@ -3161,7 +3161,7 @@ h2 {
 
   /* PropTech / FinTech */
   .cs-hero {
-    min-height: 56svh;
+    min-height: 46svh;
     padding: 55px 6vw;
   }
 
@@ -3180,7 +3180,7 @@ h2 {
 
   /* Careers */
   .cr-hero {
-    min-height: 50svh;
+    min-height: 40svh;
     padding: 55px 6vw;
   }
 }
@@ -3223,9 +3223,50 @@ h2 {
     transform: translateY(0);
   }
 }
+/* =========================================
+   MANDATE — SECTION ANIMATIONS
+   ========================================= */
+
+/* HERO */
+
+.mandate-hero .anim-1 {
+  animation: mandateHeroLabel 0.8s ease both;
+}
+
+.mandate-hero .anim-2 {
+  animation: mandateHeroTitle 1s ease 0.15s both;
+}
+
+@keyframes mandateHeroLabel {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    letter-spacing: 0.3em;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.18em;
+  }
+}
+
+@keyframes mandateHeroTitle {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
-/* ---------- DEFAULT REVEAL ---------- */
+/* =========================================
+   SCROLL REVEAL BASE
+   ========================================= */
 
 .mandate-page .reveal {
   opacity: 0;
@@ -3239,7 +3280,9 @@ h2 {
 }
 
 
-/* ---------- INTRO — FROM LEFT ---------- */
+/* =========================================
+   INTRO
+   ========================================= */
 
 .mandate-intro.reveal {
   transform: translateX(-55px);
@@ -3250,7 +3293,9 @@ h2 {
 }
 
 
-/* ---------- SECTION HEADINGS — FROM BOTTOM ---------- */
+/* =========================================
+   SECTION HEADINGS
+   ========================================= */
 
 .mandate-heading.reveal {
   transform: translateY(35px);
@@ -3261,7 +3306,9 @@ h2 {
 }
 
 
-/* ---------- DEFINITION — FROM RIGHT ---------- */
+/* =========================================
+   DEFINITION
+   ========================================= */
 
 .mandate-definition.reveal {
   transform: translateX(55px);
@@ -3272,7 +3319,9 @@ h2 {
 }
 
 
-/* ---------- STEP CARDS — STAGGERED ---------- */
+/* =========================================
+   PROCESS STEPS
+   ========================================= */
 
 .mandate-step.reveal {
   transform: translateY(50px) scale(0.97);
@@ -3299,7 +3348,7 @@ h2 {
 }
 
 
-/* ---------- STEP NUMBER ---------- */
+/* STEP NUMBER */
 
 .mandate-step-number {
   transition:
@@ -3312,45 +3361,49 @@ h2 {
 }
 
 
-/* ---------- BENEFITS CARDS — SCALE ---------- */
+/* =========================================
+   MANDATE CARDS
+   ========================================= */
 
-.mandate-dark .mandate-card.reveal {
-  transform: scale(0.88);
+.mandate-card.reveal {
+  transform: translateY(45px);
 }
 
-.mandate-dark .mandate-card.reveal.in {
-  transform: scale(1);
+.mandate-card.reveal.in {
+  transform: translateY(0);
 }
 
 
-/* ---------- BENEFIT CARD STAGGER ---------- */
+/* CARD STAGGER */
 
-.mandate-dark .mandate-card:nth-child(1) {
+.mandate-card:nth-child(1) {
   transition-delay: 0.05s;
 }
 
-.mandate-dark .mandate-card:nth-child(2) {
+.mandate-card:nth-child(2) {
   transition-delay: 0.12s;
 }
 
-.mandate-dark .mandate-card:nth-child(3) {
+.mandate-card:nth-child(3) {
   transition-delay: 0.19s;
 }
 
-.mandate-dark .mandate-card:nth-child(4) {
+.mandate-card:nth-child(4) {
   transition-delay: 0.26s;
 }
 
-.mandate-dark .mandate-card:nth-child(5) {
+.mandate-card:nth-child(5) {
   transition-delay: 0.33s;
 }
 
-.mandate-dark .mandate-card:nth-child(6) {
+.mandate-card:nth-child(6) {
   transition-delay: 0.40s;
 }
 
 
-/* ---------- TIMING CARDS — ALTERNATING ---------- */
+/* =========================================
+   LIGHT CARDS
+   ========================================= */
 
 .mandate-card-light:nth-child(odd).reveal {
   transform: translateX(-45px);
@@ -3365,7 +3418,9 @@ h2 {
 }
 
 
-/* ---------- COMPARISON COLUMNS ---------- */
+/* =========================================
+   COMPARISON
+   ========================================= */
 
 .comparison-column:first-child.reveal {
   transform: translateX(-50px);
@@ -3380,18 +3435,9 @@ h2 {
 }
 
 
-/* ---------- SUPPORT CARDS ---------- */
-
-.mandate-dark .mandate-grid .mandate-card.reveal {
-  transform: translateY(40px);
-}
-
-.mandate-dark .mandate-grid .mandate-card.reveal.in {
-  transform: translateY(0);
-}
-
-
-/* ---------- FINAL SECTIONS ---------- */
+/* =========================================
+   FINAL SECTION
+   ========================================= */
 
 .mandate-final .mandate-container.reveal {
   transform: scale(0.94);
@@ -3403,10 +3449,103 @@ h2 {
 
 
 /* =========================================
-   MOBILE
+   MOBILE ANIMATIONS
    ========================================= */
 
 @media (max-width: 720px) {
+
+  /* Base reveal */
+
+  .mandate-page .reveal {
+    opacity: 0;
+    transition:
+      opacity 0.75s ease,
+      transform 0.75s ease;
+  }
+
+  .mandate-page .reveal.in {
+    opacity: 1;
+    transform: translateY(0) !important;
+  }
+
+
+  /* Intro */
+
+  .mandate-intro.reveal {
+    transform: translateY(35px);
+  }
+
+
+  /* Section headings */
+
+  .mandate-heading.reveal {
+    transform: translateY(30px);
+  }
+
+
+  /* Definition */
+
+  .mandate-definition.reveal {
+    transform: translateY(35px);
+  }
+
+
+  /* Process steps */
+
+  .mandate-step.reveal {
+    transform: translateY(40px) scale(0.97);
+  }
+
+  .mandate-step.reveal.in {
+    transform: translateY(0) scale(1) !important;
+  }
+
+
+  /* Cards */
+
+  .mandate-card.reveal {
+    transform: translateY(35px);
+  }
+
+  .mandate-card.reveal.in {
+    transform: translateY(0) !important;
+  }
+
+
+  /* Light cards */
+
+  .mandate-card-light.reveal {
+    transform: translateY(35px);
+  }
+
+  .mandate-card-light.reveal.in {
+    transform: translateY(0) !important;
+  }
+
+
+  /* Comparison */
+
+  .comparison-column.reveal {
+    transform: translateY(35px);
+  }
+
+  .comparison-column.reveal.in {
+    transform: translateY(0) !important;
+  }
+
+
+  /* Final section */
+
+  .mandate-final .mandate-container.reveal {
+    transform: translateY(30px);
+  }
+
+  .mandate-final .mandate-container.reveal.in {
+    transform: translateY(0) !important;
+  }
+
+
+  /* Hero animation */
 
   .mandate-hero .anim-1 {
     animation-duration: 0.7s;
@@ -3414,76 +3553,6 @@ h2 {
 
   .mandate-hero .anim-2 {
     animation-duration: 0.8s;
-  }
-
-  .mandate-page .reveal {
-    transition-duration: 0.65s;
-  }
-
-  /* Intro */
-  .mandate-intro.reveal {
-    transform: translateY(25px);
-  }
-
-  .mandate-intro.reveal.in {
-    transform: translateY(0);
-  }
-
-  /* Headings */
-  .mandate-heading.reveal {
-    transform: translateY(25px);
-  }
-
-  .mandate-heading.reveal.in {
-    transform: translateY(0);
-  }
-
-  /* Definition */
-  .mandate-definition.reveal {
-    transform: translateY(25px);
-  }
-
-  .mandate-definition.reveal.in {
-    transform: translateY(0);
-  }
-
-  /* Steps */
-  .mandate-step.reveal {
-    transform: translateY(30px) scale(0.98);
-  }
-
-  .mandate-step.reveal.in {
-    transform: translateY(0) scale(1);
-  }
-
-  /* Cards */
-  .mandate-card.reveal,
-  .mandate-dark .mandate-card.reveal {
-    transform: translateY(25px);
-  }
-
-  .mandate-card.reveal.in,
-  .mandate-dark .mandate-card.reveal.in {
-    transform: translateY(0);
-  }
-
-  /* Comparison */
-  .comparison-column:first-child.reveal,
-  .comparison-column:last-child.reveal {
-    transform: translateY(25px);
-  }
-
-  .comparison-column.reveal.in {
-    transform: translateY(0);
-  }
-
-  /* Final CTA */
-  .mandate-final .mandate-container.reveal {
-    transform: scale(0.97);
-  }
-
-  .mandate-final .mandate-container.reveal.in {
-    transform: scale(1);
   }
 }
 
