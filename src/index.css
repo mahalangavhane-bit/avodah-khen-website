@@ -3526,3 +3526,53 @@ h2 {
     animation-duration: 0.8s;
   }
 }
+
+
+/* =========================================================
+   FINAL PHONE HERO IMAGE FIX
+   Desktop/tablet styles remain unchanged.
+   Fixes the homepage hero background on narrow phones.
+   ========================================================= */
+
+@media (max-width: 720px) {
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 44svh;
+    height: auto;
+    max-height: 520px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero-kenburns {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform: none;
+    animation: none;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    min-height: 42svh;
+    max-height: 460px;
+  }
+
+  .hero-kenburns {
+    background-position: 50% center;
+    background-size: cover;
+  }
+}
