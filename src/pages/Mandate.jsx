@@ -76,7 +76,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-intro reveal">
             <span className="mandate-label">SOLE SELLING PARTNER</span>
-            <h2>Step-By-Step Guide For Developers In India</h2>
+            <h3>Step-By-Step Guide For Developers In India</h3>
             <p>
               Launching a real estate project is a major financial decision.
               Choosing the right Sole Selling Partner under structured sales
@@ -95,7 +95,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-heading reveal">
             <span className="mandate-label">UNDERSTANDING THE MODEL</span>
-            <h2>What is a Sole Selling Partner?</h2>
+            <h3>What is a Sole Selling Partner?</h3>
           </div>
           <div className="mandate-definition reveal">
             <p>
@@ -119,7 +119,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-heading reveal">
             <span className="mandate-label">STEP-BY-STEP GUIDE</span>
-            <h2>While Appointing Us As Your Sole Selling Partner, You Need To...</h2>
+            <h3>While Appointing Us As Your Sole Selling Partner, You Need To...</h3>
           </div>
           <div className="mandate-steps">
             {steps.map((step) => (
@@ -149,7 +149,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-heading reveal">
             <span className="mandate-label">KEY BENEFITS</span>
-            <h2>Benefits of Appointing Avodah &amp; Khen LLP a Sole Selling Partner</h2>
+            <h3>Benefits of Appointing Avodah &amp; Khen LLP a Sole Selling Partner</h3>
           </div>
           <div className="mandate-grid">
             {benefits.map((benefit, index) => (
@@ -166,7 +166,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-heading reveal">
             <span className="mandate-label">TIMING</span>
-            <h2>When Should You Appoint Avodah &amp; Khen LLP As Your Sole Selling Partner?</h2>
+            <h3>When Should You Appoint Avodah &amp; Khen LLP As Your Sole Selling Partner?</h3>
           </div>
           <div className="mandate-grid">
             {whenToAppoint.map((item) => (
@@ -182,7 +182,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-heading reveal">
             <span className="mandate-label">SALES STRUCTURE</span>
-            <h2>Sole Selling Partner vs Multiple Channel Partners</h2>
+            <h3>Sole Selling Partner vs Multiple Channel Partners</h3>
           </div>
           <div className="mandate-comparison">
             <div className="comparison-column reveal">
@@ -213,7 +213,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-heading reveal">
             <span className="mandate-label">AVODAH &amp; KHEN LLP</span>
-            <h2>How Avodah &amp; Khen LLP Supports Developers</h2>
+            <h3>How Avodah &amp; Khen LLP Supports Developers</h3>
             <p>With 20+ years experience in sales &amp; brand mandates, we offer:</p>
           </div>
           <div className="mandate-grid">
@@ -230,7 +230,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-heading reveal">
             <span className="mandate-label">OUR STRENGTH</span>
-            <h2>We Pride Ourselves With...</h2>
+            <h3>We Pride Ourselves With...</h3>
             <p>
               Our approach is built around experience, accountability,
               structured execution and a deep understanding of the real estate
@@ -292,7 +292,7 @@ function Mandate() {
             It is building a structured, accountable and revenue-driven sales
             system backed by professional Sales mandates and brand mandates.
           </p>
-          <h3>If you want to:</h3>
+          <h4>If you want to:</h4>
           <ul>
             <li>Launch stronger.</li>
             <li>Sell faster.</li>
@@ -307,7 +307,7 @@ function Mandate() {
           <span className="mandate-label">
             So Are You Ready to Appoint Us As Your Sole Selling Partner?
           </span>
-          <h3>Contact Us Now:</h3>
+          <h4>Contact Us Now:</h4>
           <ul>
             <li>Planning a New Project Launch?</li>
             <li>Looking for structured sales execution in Mumbai?</li>
@@ -317,11 +317,6 @@ function Mandate() {
             Connect with AVODAH &amp; KHEN LLP today and let's structure your
             project under a powerful exclusive{" "}
             <strong>sales mandates and brand mandates</strong> model.
-            <br />
-            Ready to appoint the right partner? Read our guide on how to appoint
-            a sole selling partner and learn what separates a top mandate firm
-            in India from the rest. Contact AVODAH &amp; KHEN LLP to start the
-            Conversion.
           </p>
         </div>
       </section>

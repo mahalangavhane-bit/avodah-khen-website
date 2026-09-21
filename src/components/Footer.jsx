@@ -25,10 +25,6 @@ export default function Footer() {
             About us
           </NavLink>
 
-          <NavLink to="/media">
-            Media
-          </NavLink>
-
           <NavLink to="/research">
             Research
           </NavLink>

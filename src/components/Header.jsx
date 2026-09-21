@@ -8,20 +8,14 @@ const menus = {
     { to: "/proptech", label: "Proptech" },
     { to: "/fintech", label: "Fintech" },
   ],
-  media: [
-    { to: "/media", label: "Awards" },
-    { to: "/media", label: "In the news" },
-  ],
+
   company: [
     { to: "/company", label: "Who we are" },
     { to: "/company", label: "Leadership" },
     { to: "/careers", label: "Careers" },
   ],
-  research: [
-    { to: "/research", label: "Reports & viewpoints" },
-    { to: "/research", label: "City pulse briefs" },
-    { to: "/research", label: "Bespoke research" },
-  ],
+
+  research: [],
 };
 
 export default function Header({ onSearch }) {
@@ -33,14 +27,28 @@ export default function Header({ onSearch }) {
     const close = () => {
       setOpen(false);
       setActiveMenu(null);
+      setActiveItem(null);
     };
 
     window.addEventListener("hashchange", close);
 
-    return () => window.removeEventListener("hashchange", close);
+    return () => {
+      window.removeEventListener("hashchange", close);
+    };
   }, []);
 
   const handleMenuClick = (key, e) => {
+    const items = menus[key];
+
+    // Research has no dropdown, so let it navigate normally
+    if (items.length === 0) {
+      setActiveMenu(null);
+      setActiveItem(null);
+      setOpen(false);
+      return;
+    }
+
+    // Other menu items open/close dropdown
     e.preventDefault();
 
     setActiveItem(null);
@@ -66,8 +74,10 @@ export default function Header({ onSearch }) {
       <button
         className="menu-btn"
         onClick={() => setOpen((v) => !v)}
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
       >
-        {open ? "Close" : "Menu"}
+          {open ? "✕" : "☰"}
       </button>
 
       <nav className={open ? "open" : ""}>
@@ -91,32 +101,34 @@ export default function Header({ onSearch }) {
             </NavLink>
 
             {/* Dropdown */}
-            <div
-              className={
-                activeMenu === key
-                  ? "mega show"
-                  : "mega"
-              }
-            >
-              {items.map((item) => (
-                <NavLink
-                  key={item.label}
-                  to={item.to}
-                  className={
-                    activeItem === item.label
-                      ? "active-item"
-                      : ""
-                  }
-                  onClick={() => {
-                    setActiveItem(item.label);
-                    setActiveMenu(null);
-                    setOpen(false);
-                  }}
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-            </div>
+            {items.length > 0 && (
+              <div
+                className={
+                  activeMenu === key
+                    ? "mega show"
+                    : "mega"
+                }
+              >
+                {items.map((item) => (
+                  <NavLink
+                    key={item.label}
+                    to={item.to}
+                    className={
+                      activeItem === item.label
+                        ? "active-item"
+                        : ""
+                    }
+                    onClick={() => {
+                      setActiveItem(item.label);
+                      setActiveMenu(null);
+                      setOpen(false);
+                    }}
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
+              </div>
+            )}
 
           </div>
         ))}
