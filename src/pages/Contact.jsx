@@ -49,10 +49,6 @@ export default function Contact() {
         <h1 className="anim-2">
           Tell us the city, the plot, or the problem
         </h1>
-
-        <p className="lede anim-3">
-          Studios in Mumbai.
-        </p>
       </header>
 
       {/* CONTACT SECTION */}
@@ -136,7 +132,7 @@ export default function Contact() {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/919657456931"
+            href="https://wa.me/1111122222"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
@@ -147,7 +143,7 @@ export default function Contact() {
 
           {/* Instagram */}
           <a
-            href="https://www.instagram.com/mahalangavhane?stkn=MW40bDNvOWl6MWNhaQ=="
+            href="https://www.instagram.com/abc"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -158,7 +154,7 @@ export default function Contact() {
 
           {/* LinkedIn */}
           <a
-            href="https://www.linkedin.com/in/mahalangavhane/"
+            href="https://www.linkedin.com/in/abc/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"

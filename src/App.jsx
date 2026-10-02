@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import { NavLink, useRoute } from "./components/router.jsx";
 import Home from "./pages/Home.jsx";
-import Services from "./pages/Services.jsx";
 import Research from "./pages/Research.jsx";
 import Media from "./pages/Media.jsx";
 import Company from "./pages/Company.jsx";
@@ -15,7 +14,6 @@ import Careers from "./pages/Careers.jsx";
 
 const pages = {
   "/": Home,
-  "/services": Services,
   "/research": Research,
   "/media": Media,
   "/company": Company,
@@ -27,8 +25,6 @@ const pages = {
 };
 
 const searchIndex = [
-  { to: "/services", title: "Climate & Resilience Advisory" },
-  { to: "/services", title: "Liveable Cities Advisory" },
   { to: "/research", title: "Heat-ready housing report" },
   { to: "/media", title: "Street Talk podcast" },
   { to: "/company", title: "Leadership team" },
@@ -40,33 +36,41 @@ export default function App() {
   const Page = pages[path] || Home;
   const [search, setSearch] = useState(false);
   const [q, setQ] = useState("");
-  const [tick, setTick] = useState(0);
-
-  useEffect(() => {
-    setTick((n) => n + 1);
-  }, [path]);
 
   const hits = searchIndex.filter((item) =>
     item.title.toLowerCase().includes(q.toLowerCase())
   );
 
   return (
-    <div className="site">
+    <div className="site site-premium">
       <Header onSearch={() => setSearch(true)} />
-      <div key={tick} className="page-enter">
+
+      <main id="main-content" key={path} className="page-enter">
         <Page />
-      </div>
+      </main>
+
       <Footer />
 
       {search && (
-        <div className="search-layer" onClick={() => setSearch(false)}>
-          <div className="search-box" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="search-layer"
+          onClick={() => setSearch(false)}
+        >
+          <div
+            className="search-box"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site search"
+            onClick={(e) => e.stopPropagation()}
+          >
             <input
               autoFocus
+              aria-label="Search services, reports, and people"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search services, reports, people..."
             />
+
             <ul>
               {hits.map((item) => (
                 <li key={item.title}>

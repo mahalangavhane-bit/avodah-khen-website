@@ -7,6 +7,7 @@ const menus = {
     { to: "/mandate", label: "Mandate" },
     { to: "/proptech", label: "Proptech" },
     { to: "/fintech", label: "Fintech" },
+    { to: "/home", label:"Leasing and Investment Advisory"}
   ],
 
   company: [

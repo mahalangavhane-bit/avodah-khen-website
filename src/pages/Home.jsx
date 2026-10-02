@@ -1,254 +1,138 @@
-import { useState } from "react";
 import { NavLink } from "../components/router.jsx";
 import useReveal from "../hooks/useReveal.js";
-import useCountUp from "../hooks/useCountUp.js";
 
-const reports = [
-  {
-    tag: "Climate",
-    date: "Aug '26",
-    title: "Heat-ready housing: what buyers will pay for in 2027",
-  },
-  {
-    tag: "Cities",
-    date: "Aug '26",
-    title: "Indore & Coimbatore: the next liveable growth belts",
-  },
-  {
-    tag: "Circular",
-    date: "Jul '26",
-    title: "Retrofit first: why empty offices can become homes",
-  },
-  {
-    tag: "Retail",
-    date: "Jul '26",
-    title: "High-street revival vs malls in mid-size India",
-  },
+const pillars = [
+  { number: "01", title: "PropTech", text: "Digital products that simplify how property is discovered, marketed and sold." },
+  { number: "02", title: "AI + Data", text: "Intelligence that helps teams make faster, more informed decisions." },
+  { number: "03", title: "Execution", text: "Technology combined with real-world sales and property expertise." },
 ];
 
-const ideas = [
-  {
-    kicker: "Idea 01",
-    title: "Shade as infrastructure",
-    text: "We treat tree cover, colonnades and cool roofs as assets — scored like FSI, not landscaping extras.",
-  },
-  {
-    kicker: "Idea 02",
-    title: "Homes that earn their keep",
-    text: "Balconies as food gardens, rooftops as solar commons, and parking that converts to markets on weekends.",
-  },
-  {
-    kicker: "Idea 03",
-    title: "Trust before volume",
-    text: "A buyer bill of rights: water hours, commute times and flood history on every listing — no fine print.",
-  },
+const challenges = [
+  { number: "01", title: "Fragmented discovery", text: "Buyers navigate disconnected listings and channels." },
+  { number: "02", title: "Lead leakage", text: "Enquiries can get lost across teams, spreadsheets and messaging." },
+  { number: "03", title: "Limited intelligence", text: "Decisions often lack a single view of demand, pricing and performance." },
+  { number: "04", title: "Complex sales", text: "Mandates, channel partners and follow-ups require constant coordination." },
 ];
 
-const logos = [
-  "Niva Homes",
-  "Arka Funds",
-  "Civic Board",
-  "Saffron REIT",
-  "Kala Workspace",
-  "Orion Parks",
-  "Blueline Infra",
-  "Harbor Living",
+const ecosystem = [
+  ["Property Portal", "Discover"], ["AI + Data", "Understand"], ["Mandates", "Represent"], ["CRM", "Manage"], ["Sales", "Convert"],
 ];
 
-function Stat({ end, suffix, label }) {
-  const [ref, value] = useCountUp(end);
+const solutions = [
+  { number: "01", title: "Property Portal", text: "A digital destination for property discovery, project and inventory exploration, rich profiles and buyer enquiries.", to: "/proptech", link: "Explore PropTech" },
+  { number: "02", title: "AI-Powered PropTech", text: "AI recommendations, lead intelligence and automation connected to real estate data and sales workflows.", to: "/proptech", link: "Explore capabilities" },
+  { number: "03", title: "Property Mandate Services", text: "Project marketing, qualified lead generation, channel coordination and sales execution for selected properties.", to: "/mandate", link: "Explore mandates" },
+  { number: "04", title: "Developer Solutions", text: "Launch strategy, digital marketing, lead generation and sales enablement from launch to sell-through.", to: "/services", link: "Explore solutions" },
+  { number: "05", title: "CRM & Sales Automation", text: "Structure enquiries, allocation, follow-ups, site visits, conversion tracking and dashboards in a connected journey.", to: "/proptech", link: "Explore PropTech" },
+  { number: "06", title: "Data & Market Intelligence", text: "Bring demand signals, pricing visibility and funnel analytics into clearer business decisions.", to: "/research", link: "Explore insights" },
+];
 
-  return (
-    <div ref={ref}>
-      <strong>
-        {value.toLocaleString("en-IN")}
-        {suffix}
-      </strong>
-      <span>{label}</span>
-    </div>
-  );
-}
+const steps = [
+  ["01", "Acquire", "Mandate / inventory"], ["02", "Position", "Strategy + content"], ["03", "Generate", "Marketing + demand"],
+  ["04", "Manage", "CRM + channels"], ["05", "Convert", "Visits + sales"], ["06", "Learn", "Data + optimization"],
+];
+
+const reasons = [
+  ["Real-estate first", "Products and workflows designed around property businesses."],
+  ["Technology-led", "Modern digital experiences, automation and AI."],
+  ["Execution focused", "Technology paired with hands-on sales and mandate capabilities."],
+  ["Data connected", "Performance visibility across the customer and sales journey."],
+];
 
 export default function Home() {
   useReveal();
-  const [active, setActive] = useState("climate");
-
   return (
-    <>
-      <section className="hero home-hero">
-        <div className="hero-kenburns" />
-
-        <div className="hero-copy">
-          <p className="eyebrow anim-1">
-            REAL ESTATE. REIMAGINED WITH PROPTECH
-          </p>
-
-          <h1 className="anim-2">
-            Technology-driven solutions. Transforming the way real estate
-            moves
-          </h1>
-
-          <p className="lede anim-3">
-            We combine real estate expertise with technology to make buying,
-            selling and investing in property simpler, smarter and more
-            transparent.
-          </p>
-        </div>
-
-        <div className="scroll-cue">Scroll</div>
-      </section>
-
-      <section className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          {[...logos, ...logos].map((name, i) => (
-            <span key={`${name}-${i}`}>{name}</span>
-          ))}
-        </div>
-      </section>
-
-      <section className="pillars">
-        {[
-          [
-            "Street-level intelligence",
-            "Walk scores, shade maps and commute reality — not only absorption charts.",
-          ],
-          [
-            "Advice plus execution",
-            "From land brief to launch, with partners who actually build what we recommend.",
-          ],
-          [
-            "Climate as a product",
-            "Cooling, water and energy designed in, then priced like a real amenity.",
-          ],
-          [
-            "Trusted by city-makers",
-            "Developers, housing boards and patient capital looking past the next quarter.",
-          ],
-        ].map(([title, text], i) => (
-          <article
-            key={title}
-            className="reveal"
-            style={{ transitionDelay: `${i * 90}ms` }}
-          >
-            <h3>{title}</h3>
-            <p>{text}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="stats">
-        <div className="stats-copy reveal">
-          <p className="kicker">Our story</p>
-
-          <h2>
-            Trusted to deliver liveable value, not just transacted volume
-          </h2>
-
-          <NavLink className="btn ghost light" to="/company">
-            Read who we are
-          </NavLink>
-        </div>
-
-        <div className="stat-grid">
-          <Stat
-            end={180}
-            suffix="+"
-            label="Urbanists, climate analysts and deal teams across India"
-          />
-
-          <Stat
-            end={42}
-            suffix="k cr"
-            label="Projects advised with a climate or circular brief since 2021"
-          />
-
-          <Stat
-            end={22}
-            suffix=" cities"
-            label="Studios in India plus desks in Dubai, Lisbon and Singapore"
-          />
-
-          <Stat
-            end={3200}
-            suffix=""
-            label="Local partners who know the street, not only the brochure"
-          />
-        </div>
-      </section>
-
-      <section className="block">
-        <div className="row-head reveal">
-          <div>
-            <p className="kicker">Research</p>
-            <h2>Intelligence built for confident decisions</h2>
+    <div className="av-home">
+      <section className="av-home-hero">
+        <div className="av-home-hero-image" aria-hidden="true" />
+        <div className="av-home-hero-shade" aria-hidden="true" />
+        <div className="av-home-hero-content hero-enter">
+          <p className="av-eyebrow av-eyebrow-light">REAL ESTATE. REIMAGINED WITH PROPTECH</p>
+          <h1>Technology-driven solutions.<br />Transforming the way <em>real estate moves.</em></h1>
+          <p className="av-hero-lede">We combine real estate expertise with technology to make buying, selling and investing in property simpler, smarter and more transparent.</p>
+          <div className="av-actions">
+            <NavLink className="av-button av-button-copper" to="/contact">Talk to our team <span aria-hidden="true"></span></NavLink>
+            <NavLink className="av-button av-button-outline-light" to="/proptech">Explore PropTech</NavLink>
           </div>
-
-          <NavLink className="text-link" to="/research">
-            View all reports
-          </NavLink>
-        </div>
-
-        <div className="report-grid">
-          {reports.map((r, i) => (
-            <article
-              key={r.title}
-              className="report reveal"
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              <div className={`report-art art-${i}`} />
-
-              <p className="meta">
-                {r.tag} · {r.date}
-              </p>
-
-              <h3>{r.title}</h3>
-
-              <NavLink to="/research">View report</NavLink>
-            </article>
-          ))}
         </div>
       </section>
 
-      <section className="block ideas">
-        <p className="kicker reveal">Different ideas</p>
+      <section className="av-section av-intro reveal" id="who-we-are">
+        <div className="av-section-kicker">WHO WE ARE</div>
+        <div className="av-intro-main">
+          <h2>A technology-led real estate company built around <em>one connected ecosystem.</em></h2>
+          <div className="av-intro-copy">
+            <p>AVODAH PropTech connects digital products, real estate expertise and execution across property discovery, marketing and sales.</p>
+            <NavLink className="av-text-link" to="/company">Discover the company <span aria-hidden="true"></span></NavLink>
+          </div>
+        </div>
+        <div className="av-pillar-grid reveal-stagger">
+          {pillars.map((item) => <article className="av-pillar stagger-card" key={item.number}>
+            <div className="av-card-top"><span>{item.number}</span><span className="av-card-mark" aria-hidden="true"></span></div>
+            <h3>{item.title}</h3><p>{item.text}</p>
+          </article>)}
+        </div>
+        <div className="av-focus-band reveal"><span>OUR FOCUS</span><p>Connect the right property, the right buyer and the right sales strategy — at scale.</p></div>
+      </section>
 
-        <h2 className="reveal">
-          What we believe that most brokers will not say
-        </h2>
-
-        <div className="idea-grid">
-          {ideas.map((idea, i) => (
-            <article
-              key={idea.title}
-              className="reveal"
-              style={{ transitionDelay: `${i * 90}ms` }}
-            >
-              <span>{idea.kicker}</span>
-              <h3>{idea.title}</h3>
-              <p>{idea.text}</p>
-            </article>
-          ))}
+      <section className="av-section av-gap-section reveal">
+        <div className="av-section-heading">
+          <div className="av-section-kicker">THE REAL ESTATE GAP</div>
+          <h2>High-value decisions.<br /><em>Fragmented workflows.</em></h2>
+          <p>Real estate is high-value, but many workflows remain fragmented.</p>
+        </div>
+        <div className="av-gap-grid reveal-stagger">
+          {challenges.map((item) => <article className="av-gap-card stagger-card" key={item.number}>
+            <span className="av-number">{item.number}</span><span className="av-gap-arrow" aria-hidden="true"></span>
+            <h3>{item.title}</h3><p>{item.text}</p>
+          </article>)}
         </div>
       </section>
 
-      <section className="contact">
-        <div className="reveal">
-          <p className="kicker">Contact</p>
-
-          <h2>Tell us the city, the plot, or the problem.</h2>
-
-          <p>
-            A 20-minute briefing. No pitch deck until we have walked the
-            street.
-          </p>
+      <section className="av-section av-ecosystem-section reveal">
+        <div className="av-section-kicker av-eyebrow-light">OUR CONNECTED ECOSYSTEM</div>
+        <div className="av-ecosystem-heading"><h2>One connected layer.<br /><em>Every step in view.</em></h2><p>One ecosystem spanning discovery, demand generation, sales execution and intelligence.</p></div>
+        <div className="av-ecosystem-flow reveal-stagger">
+          {ecosystem.map(([name, verb], index) => <div className="av-ecosystem-step stagger-card" key={name}>
+            <span className="av-eco-index">0{index + 1}</span><strong>{name}</strong><span>{verb}</span>
+            {index < ecosystem.length - 1 && <span className="av-eco-connector" aria-hidden="true">→</span>}
+          </div>)}
         </div>
+        <p className="av-ecosystem-note">A single operating layer for modern real estate businesses.</p>
+      </section>
 
-        <div className="reveal">
-          <NavLink className="btn primary" to="/contact">
-            Open the contact page
-          </NavLink>
+      <section className="av-section av-solutions-section reveal" id="solutions">
+        <div className="av-section-heading av-heading-row">
+          <div><div className="av-section-kicker">OUR SOLUTIONS</div><h2>From discovery<br />to <em>conversion.</em></h2></div>
+          <p>Connected capabilities for property businesses, developers and sales teams.</p>
+        </div>
+        <div className="av-solution-grid reveal-stagger">
+          {solutions.map((item) => <article className="av-solution-card stagger-card" key={item.number}>
+            <div className="av-card-top"><span>{item.number}</span><span className="av-solution-icon" aria-hidden="true"></span></div>
+            <h3>{item.title}</h3><p>{item.text}</p><NavLink className="av-text-link" to={item.to}>{item.link} <span aria-hidden="true"></span></NavLink>
+          </article>)}
         </div>
       </section>
-    </>
+
+      <section className="av-section av-process-section reveal">
+        <div className="av-section-kicker">HOW WE WORK</div>
+        <div className="av-process-heading"><h2>A repeatable model.<br /><em>Measurable outcomes.</em></h2><p>From property acquisition to data-led optimization.</p></div>
+        <div className="av-process-grid reveal-stagger">
+          {steps.map(([number, title, detail]) => <article className="av-process-step stagger-card" key={number}><span>{number}</span><h3>{title}</h3><p>{detail}</p></article>)}
+        </div>
+      </section>
+
+      <section className="av-section av-why-section reveal">
+        <div className="av-why-image" role="img" aria-label="Contemporary residential development" />
+        <div className="av-why-content"><div className="av-section-kicker">WHY AVODAH</div><h2>Technology grounded in <em>real estate execution.</em></h2><p className="av-why-lede">Built to bridge technology and real estate execution.</p>
+          <div className="av-reason-list reveal-stagger">{reasons.map(([title, text], index) => <div className="av-reason stagger-card" key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></div>)}</div>
+        </div>
+      </section>
+
+      <section className="av-contact-cta reveal">
+        <div><div className="av-section-kicker">LET’S CONNECT</div><h2>Let’s build the future<br /><em>of real estate.</em></h2><p>Partner with us for property mandates, technology, lead generation, CRM, AI and sales execution.</p></div>
+        <div className="av-contact-details"><NavLink className="av-button av-button-dark" to="/contact">Contact AVODAH <span aria-hidden="true">↗</span></NavLink></div>
+      </section>
+    </div>
   );
 }

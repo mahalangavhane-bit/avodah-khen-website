@@ -2,7 +2,16 @@ import { useEffect } from "react";
 
 export default function useReveal() {
   useEffect(() => {
-    const items = document.querySelectorAll(".reveal");
+    const items = document.querySelectorAll(".reveal, .reveal-stagger");
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      items.forEach((item) => item.classList.add("in"));
+      return;
+    }
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -15,12 +24,12 @@ export default function useReveal() {
         });
       },
       {
-        threshold: 0.16,
-        rootMargin: "0px 0px -40px 0px",
+        threshold: 0.12,
+        rootMargin: "0px 0px -35px 0px",
       }
     );
 
-    items.forEach((el) => io.observe(el));
+    items.forEach((item) => io.observe(item));
 
     return () => io.disconnect();
   }, []);
