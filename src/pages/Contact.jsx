@@ -6,40 +6,43 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyNDSRIiRGf9tMN1d0CtUWatZb0-1vnSEXcs4TSnQA2Z4Vk_wfcqTqy71iynhSrpeObVw/exec";
-
 export default function Contact() {
   useReveal();
 
   const [sent, setSent] = useState(false);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const form = e.currentTarget;
+  const formData = new FormData(form);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    const data = {
-      type: "contact",
-      name: formData.get("name"),
-      email: formData.get("email"),
-      note: formData.get("note"),
-    };
-
-    // Show Thank You message immediately
-    setSent(true);
-
-    // Save data to Google Sheet in background
-    fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify(data),
-    }).catch((error) => {
-      console.error("Form submission failed:", error);
-    });
+  const data = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    city: formData.get("city"),
   };
 
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || "Form submission failed.");
+    }
+
+    setSent(true);
+  } catch (error) {
+    console.error("Form submission failed:", error);
+    alert("Something went wrong. Please try again.");
+  }
+};
   return (
     <main className="inner">
       {/* PAGE HERO */}
@@ -110,11 +113,10 @@ export default function Contact() {
               placeholder="Work email"
               required
             />
-
-            <textarea
-              name="note"
-              rows="4"
-              placeholder="City and what you need"
+            <input
+              type="text"
+              name="city"
+              placeholder="City"
               required
             />
 
