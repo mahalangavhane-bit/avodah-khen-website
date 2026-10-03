@@ -134,7 +134,7 @@ export default function Contact() {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/1111122222"
+            href="https://wa.me/7507607744"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
