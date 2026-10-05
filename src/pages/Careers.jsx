@@ -1,8 +1,9 @@
 import { useState } from "react";
 import useReveal from "../hooks/useReveal.js";
+import { NavLink } from "../components/router.jsx";
+import { JOB_OPENINGS } from "../data/jobs.js";
 
 const DEPARTMENTS = ["Sales", "Marketing", "IT"];
-
 const INITIAL_FORM = {
   firstName: "",
   lastName: "",
@@ -63,6 +64,11 @@ export default function Careers() {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedTeam, setSelectedTeam] = useState("");
+  const [keyword, setKeyword] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("");
+
   const handleChange = (field) => (e) => {
     const { value } = e.target;
 
@@ -80,6 +86,34 @@ export default function Careers() {
     });
   };
 
+  const handleApplyJob = (jobTitle) => {
+    setForm((prev) => ({
+      ...prev,
+      jobTitle,
+    }));
+
+    setErrors((prev) => {
+      if (!prev.jobTitle) return prev;
+
+      const next = { ...prev };
+      delete next.jobTitle;
+      return next;
+    });
+
+    setTimeout(() => {
+      const jobField = document.getElementById("cr-jobTitle");
+
+      if (jobField) {
+        jobField.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+
+        jobField.focus();
+      }
+    }, 100);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -91,43 +125,84 @@ export default function Careers() {
       return;
     }
 
-  try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/careers`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      firstName: form.firstName,
-      lastName: form.lastName,
-      phone: form.phone,
-      email: form.email,
-      department: form.department,
-      jobTitle: form.jobTitle,
-      message: form.message,
-    }),
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/careers`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName: form.firstName,
+            lastName: form.lastName,
+            phone: form.phone,
+            email: form.email,
+            department: form.department,
+            jobTitle: form.jobTitle,
+            message: form.message,
+          }),
+        }
+      );
+
+      const result = await response.json();
+
+      console.log("Career API response:", result);
+      console.log("Career API status:", response.status);
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || "Application submission failed."
+        );
+      }
+
+      setSubmitted(true);
+      setForm(INITIAL_FORM);
+    } catch (error) {
+      console.error("Application submission failed:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  };
+
+  const filteredJobs = JOB_OPENINGS.filter((job) => {
+    const matchesCategory =
+      selectedCategory === "All" ||
+      job.category === selectedCategory;
+
+    const matchesTeam =
+      !selectedTeam ||
+      job.category === selectedTeam;
+
+    const searchText = keyword.toLowerCase().trim();
+
+    const matchesKeyword =
+      !searchText ||
+      job.title.toLowerCase().includes(searchText) ||
+      job.category.toLowerCase().includes(searchText) ||
+      job.description.toLowerCase().includes(searchText);
+
+    const matchesLocation =
+      !selectedLocation ||
+      job.location === selectedLocation;
+
+    return (
+      matchesCategory &&
+      matchesTeam &&
+      matchesKeyword &&
+      matchesLocation
+    );
   });
 
-  const result = await response.json();
-  console.log("Career API response:", result);
-  console.log("Career API status:", response.status);
-
-  if (!response.ok) {
-    throw new Error(
-      result.message || "Application submission failed."
-    );
-  }
-
-  setSubmitted(true);
-  setForm(INITIAL_FORM);
-} catch (error) {
-  console.error("Application submission failed:", error);
-  alert("Something went wrong. Please try again.");
-}
-};
+  const resetSearch = () => {
+    setSelectedTeam("");
+    setKeyword("");
+    setSelectedLocation("");
+    setSelectedCategory("All");
+  };
 
   return (
     <main className="inner cr-page">
+
       {/* HERO */}
       <section className="hero cr-hero">
         <div className="cr-hero-bg" aria-hidden="true" />
@@ -146,10 +221,384 @@ export default function Careers() {
         </div>
       </section>
 
+      {/* JOB OPENINGS */}
+      <section className="cr-jobs-section">
+
+        {/* INTRO */}
+        <div className="cr-jobs-header reveal">
+          <div>
+            <p className="kicker">
+              Current Opportunities
+            </p>
+
+            <h2>
+              Find Your Next Opportunity
+            </h2>
+
+            <p>
+              Explore current openings and discover where you can
+              build your career with AVODAH &amp; KHEN LLP.
+            </p>
+          </div>
+        </div>
+
+        {/* SEARCH */}
+        <div className="cr-job-search reveal">
+
+          <select
+            id="job-team"
+            value={selectedTeam}
+            onChange={(e) => {
+              setSelectedTeam(e.target.value);
+              setSelectedCategory("All");
+            }}
+            aria-label="Select team"
+          >
+            <option value="">
+              All Teams
+            </option>
+
+            <option value="Technology">
+              Technology
+            </option>
+
+            <option value="Product">
+              Product
+            </option>
+
+            <option value="Sales">
+              Sales
+            </option>
+
+            <option value="Marketing">
+              Marketing
+            </option>
+
+            <option value="Research">
+              Research
+            </option>
+
+            <option value="Analytics">
+              Analytics
+            </option>
+          </select>
+
+          <input
+            id="job-keyword"
+            type="text"
+            placeholder="Keywords"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            aria-label="Search jobs by keyword"
+          />
+
+          <select
+            id="job-location"
+            value={selectedLocation}
+            onChange={(e) =>
+              setSelectedLocation(e.target.value)
+            }
+            aria-label="Select location"
+          >
+            <option value="">
+              Any Location
+            </option>
+
+            <option value="India">
+              India
+            </option>
+          </select>
+
+          <button
+            type="button"
+            className="btn primary cr-job-search-btn"
+            onClick={() => {
+              document
+                .querySelector(".cr-openings-list")
+                ?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+            }}
+          >
+            Search Jobs
+          </button>
+
+        </div>
+
+        {/* OPENINGS */}
+        <div className="cr-openings-layout">
+
+          {/* LEFT FILTER */}
+          <aside className="cr-openings-sidebar">
+
+            <p className="cr-openings-label">
+              CURRENT OPENINGS
+            </p>
+
+            {/* ALL */}
+            <button
+              type="button"
+              className={`cr-opening-filter ${
+                selectedCategory === "All"
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() => {
+                setSelectedCategory("All");
+                setSelectedTeam("");
+              }}
+            >
+              <span>
+                All Openings
+              </span>
+
+              <span>
+                {JOB_OPENINGS.length}
+              </span>
+            </button>
+
+            {/* TECHNOLOGY */}
+            <button
+              type="button"
+              className={`cr-opening-filter ${
+                selectedCategory === "Technology"
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() => {
+                setSelectedCategory("Technology");
+                setSelectedTeam("");
+              }}
+            >
+              <span>
+                Technology
+              </span>
+
+              <span>
+                {
+                  JOB_OPENINGS.filter(
+                    (job) =>
+                      job.category === "Technology"
+                  ).length
+                }
+              </span>
+            </button>
+
+            {/* SALES */}
+            <button
+              type="button"
+              className={`cr-opening-filter ${
+                selectedCategory === "Sales"
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() => {
+                setSelectedCategory("Sales");
+                setSelectedTeam("");
+              }}
+            >
+              <span>
+                Sales
+              </span>
+
+              <span>
+                {
+                  JOB_OPENINGS.filter(
+                    (job) =>
+                      job.category === "Sales"
+                  ).length
+                }
+              </span>
+            </button>
+
+            {/* PRODUCT */}
+            <button
+              type="button"
+              className={`cr-opening-filter ${
+                selectedCategory === "Product"
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() => {
+                setSelectedCategory("Product");
+                setSelectedTeam("");
+              }}
+            >
+              <span>
+                Product
+              </span>
+
+              <span>
+                {
+                  JOB_OPENINGS.filter(
+                    (job) =>
+                      job.category === "Product"
+                  ).length
+                }
+              </span>
+            </button>
+
+            {/* MARKETING */}
+            <button
+              type="button"
+              className={`cr-opening-filter ${
+                selectedCategory === "Marketing"
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() => {
+                setSelectedCategory("Marketing");
+                setSelectedTeam("");
+              }}
+            >
+              <span>
+                Marketing
+              </span>
+
+              <span>
+                {
+                  JOB_OPENINGS.filter(
+                    (job) =>
+                      job.category === "Marketing"
+                  ).length
+                }
+              </span>
+            </button>
+
+            {/* RESET */}
+            {(selectedTeam ||
+              keyword ||
+              selectedLocation ||
+              selectedCategory !== "All") && (
+              <button
+                type="button"
+                className="cr-job-reset"
+                onClick={resetSearch}
+              >
+                Clear Filters
+              </button>
+            )}
+
+          </aside>
+
+          {/* RIGHT SIDE */}
+          <div className="cr-openings-list">
+
+            <div className="cr-openings-list-header">
+              <p className="kicker">
+                Opportunities
+              </p>
+
+              <h3>
+                All Openings
+              </h3>
+
+              <p className="cr-results-count">
+                {filteredJobs.length}{" "}
+                {filteredJobs.length === 1
+                  ? "position"
+                  : "positions"}{" "}
+                available
+              </p>
+            </div>
+
+            {filteredJobs.length > 0 ? (
+              filteredJobs.map((job) => (
+
+                <article
+                  className="cr-job-card reveal"
+                  key={job.title}
+                >
+
+                  <div className="cr-job-main">
+
+                    <h4>
+                      {job.title}
+                    </h4>
+
+                    <div className="cr-job-meta">
+                      <span>
+                        {job.location}
+                      </span>
+
+                      <span>
+                        •
+                      </span>
+
+                      <span>
+                        {job.category}
+                      </span>
+                    </div>
+
+                    <span className="cr-job-tag">
+                      {job.category}
+                    </span>
+
+                  </div>
+
+                  <div className="cr-job-action">
+
+                  <NavLink
+                    to={`/careers/${job.slug}`}
+                    className="cr-job-description-link"
+                  >
+                    Job Description
+                </NavLink>
+
+                    <button
+                      type="button"
+                      className="btn primary cr-apply-job"
+                      onClick={() =>
+                        handleApplyJob(job.title)
+                      }
+                    >
+                      Apply Now
+                    </button>
+
+                  </div>
+
+                </article>
+
+              ))
+            ) : (
+              <div className="cr-no-results">
+                <p className="kicker">
+                  No Openings Found
+                </p>
+
+                <h4>
+                  We couldn't find a matching position.
+                </h4>
+
+                <p>
+                  Try changing your search or clearing
+                  the filters.
+                </p>
+
+                <button
+                  type="button"
+                  className="btn primary"
+                  onClick={resetSearch}
+                >
+                  View All Openings
+                </button>
+              </div>
+            )}
+
+          </div>
+
+        </div>
+
+      </section>
+
       {/* APPLICATION SECTION */}
       <section className="cr-form-section">
+
         <div className="cr-form-intro reveal">
-          <p className="kicker">Join Our Team</p>
+          <p className="kicker">
+            Join Our Team
+          </p>
 
           <h2>
             We would love to hear from you.
@@ -162,19 +611,26 @@ export default function Careers() {
         </div>
 
         {submitted ? (
-          <div className="cr-success" role="status">
-            <div className="cr-success-icon">✓</div>
+          <div
+            className="cr-success"
+            role="status"
+          >
+            <div className="cr-success-icon">
+              ✓
+            </div>
 
             <p className="cr-success-title">
               Application Submitted
             </p>
 
             <p>
-              Thank you for your interest in AVODAH &amp; KHEN LLP.
+              Thank you for your interest in
+              AVODAH &amp; KHEN LLP.
             </p>
 
             <p>
-              Our team will review your application and get back to you.
+              Our team will review your application
+              and get back to you.
             </p>
           </div>
         ) : (
@@ -183,6 +639,7 @@ export default function Careers() {
             noValidate
             onSubmit={handleSubmit}
           >
+
             <div className="cr-form-grid">
 
               {/* FIRST NAME */}
@@ -199,7 +656,9 @@ export default function Careers() {
                   required
                   value={form.firstName}
                   onChange={handleChange("firstName")}
-                  aria-invalid={Boolean(errors.firstName)}
+                  aria-invalid={Boolean(
+                    errors.firstName
+                  )}
                   aria-describedby={
                     errors.firstName
                       ? "cr-firstName-error"
@@ -231,7 +690,9 @@ export default function Careers() {
                   required
                   value={form.lastName}
                   onChange={handleChange("lastName")}
-                  aria-invalid={Boolean(errors.lastName)}
+                  aria-invalid={Boolean(
+                    errors.lastName
+                  )}
                   aria-describedby={
                     errors.lastName
                       ? "cr-lastName-error"
@@ -263,7 +724,9 @@ export default function Careers() {
                   required
                   value={form.phone}
                   onChange={handleChange("phone")}
-                  aria-invalid={Boolean(errors.phone)}
+                  aria-invalid={Boolean(
+                    errors.phone
+                  )}
                   aria-describedby={
                     errors.phone
                       ? "cr-phone-error"
@@ -295,7 +758,9 @@ export default function Careers() {
                   required
                   value={form.email}
                   onChange={handleChange("email")}
-                  aria-invalid={Boolean(errors.email)}
+                  aria-invalid={Boolean(
+                    errors.email
+                  )}
                   aria-describedby={
                     errors.email
                       ? "cr-email-error"
@@ -325,7 +790,9 @@ export default function Careers() {
                   required
                   value={form.department}
                   onChange={handleChange("department")}
-                  aria-invalid={Boolean(errors.department)}
+                  aria-invalid={Boolean(
+                    errors.department
+                  )}
                   aria-describedby={
                     errors.department
                       ? "cr-department-error"
@@ -337,7 +804,10 @@ export default function Careers() {
                   </option>
 
                   {DEPARTMENTS.map((dept) => (
-                    <option key={dept} value={dept}>
+                    <option
+                      key={dept}
+                      value={dept}
+                    >
                       {dept}
                     </option>
                   ))}
@@ -367,7 +837,9 @@ export default function Careers() {
                   required
                   value={form.jobTitle}
                   onChange={handleChange("jobTitle")}
-                  aria-invalid={Boolean(errors.jobTitle)}
+                  aria-invalid={Boolean(
+                    errors.jobTitle
+                  )}
                   aria-describedby={
                     errors.jobTitle
                       ? "cr-jobTitle-error"
@@ -399,7 +871,9 @@ export default function Careers() {
                   required
                   value={form.message}
                   onChange={handleChange("message")}
-                  aria-invalid={Boolean(errors.message)}
+                  aria-invalid={Boolean(
+                    errors.message
+                  )}
                   aria-describedby={
                     errors.message
                       ? "cr-message-error"
@@ -420,6 +894,7 @@ export default function Careers() {
             </div>
 
             <div className="cr-submit-row">
+
               <p className="cr-submit-note">
                 We respect your privacy and will only use
                 your information for recruitment purposes.
@@ -429,7 +904,9 @@ export default function Careers() {
                 className="btn primary cr-submit"
                 type="submit"
               >
-                <span>Submit Application</span>
+                <span>
+                  Submit Application
+                </span>
 
                 <span
                   className="cr-arrow"
@@ -438,10 +915,14 @@ export default function Careers() {
                   →
                 </span>
               </button>
+
             </div>
+
           </form>
         )}
+
       </section>
+
     </main>
   );
 }

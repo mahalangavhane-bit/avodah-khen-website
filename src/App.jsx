@@ -11,6 +11,8 @@ import Mandate from "./pages/Mandate.jsx";
 import Proptech from "./pages/Proptech.jsx";
 import Fintech from "./pages/Fintech.jsx";
 import Careers from "./pages/Careers.jsx";
+import JobDescription from "./pages/JobDescription.jsx";
+import LeasingAndInvestmentAdvisory from "./pages/LeasingAndInvestmentAdvisory.jsx";
 
 const pages = {
   "/": Home,
@@ -22,6 +24,7 @@ const pages = {
   "/proptech": Proptech,
   "/fintech": Fintech,
   "/careers": Careers,
+  "/leasing-investment-advisory": LeasingAndInvestmentAdvisory,
 };
 
 const searchIndex = [
@@ -33,7 +36,10 @@ const searchIndex = [
 
 export default function App() {
   const path = useRoute();
-  const Page = pages[path] || Home;
+  const Page =
+  path.startsWith("/careers/") && path !== "/careers"
+    ? JobDescription
+    : pages[path] || Home;
   const [search, setSearch] = useState(false);
   const [q, setQ] = useState("");
 
