@@ -43,7 +43,7 @@ test.describe("Contact form", () => {
 
     const nameInput = page.locator('input[name="name"]');
     const emailInput = page.locator('input[name="email"]');
-    const noteInput = page.locator('textarea[name="note"]');
+    const cityInput = page.locator('input[name="city"]');
 
     await page.getByRole("button", {
       name: "Request a briefing",
@@ -51,23 +51,25 @@ test.describe("Contact form", () => {
 
     expect(await nameInput.evaluate((el) => el.checkValidity())).toBe(false);
     expect(await emailInput.evaluate((el) => el.checkValidity())).toBe(false);
-    expect(await noteInput.evaluate((el) => el.checkValidity())).toBe(false);
+    expect(await cityInput.evaluate((el) => el.checkValidity())).toBe(false);
   });
 
   test("valid form displays the thank-you message", async ({ page }) => {
     await page.goto("/#/contact");
 
-    // Intercept the Google Apps Script request so no real form data is sent.
-    await page.route("https://script.google.com/**", async (route) => {
-      await route.fulfill({
-        status: 200,
-        body: "Test submission received",
-      });
-    });
+    await page.route("**/api/contact", async (route) => {
+    await route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      message: "Contact request submitted successfully",
+    }),
+  });
+});
 
     await page.locator('input[name="name"]').fill("Playwright Test");
     await page.locator('input[name="email"]').fill("test@example.com");
-    await page.locator('textarea[name="note"]').fill("Testing the contact form");
+    await page.locator('input[name="city"]').fill("Mumbai");
 
     await page.getByRole("button", {
       name: "Request a briefing",
