@@ -60,7 +60,7 @@ export default function Home() {
         <div className="av-home-hero-shade" aria-hidden="true" />
         <div className="av-home-hero-content hero-seq">
           <p className="av-eyebrow av-eyebrow-light">REAL ESTATE. REIMAGINED WITH PROPTECH</p>
-          <WordReveal as="h1" trigger="mount" delay={160} step={60}>Technology-driven solutions.<br />Transforming the way <em>real estate moves.</em></WordReveal>
+          <WordReveal as="h1" trigger="view" delay={160} step={60}>Technology-driven solutions.<br />Transforming the way <em>real estate moves.</em></WordReveal>
           <p className="av-hero-lede">We combine real estate expertise with technology to make buying, selling and investing in property simpler, smarter and more transparent.</p>
           <div className="av-actions">
             <MagneticButton><NavLink className="av-button av-button-copper" to="/contact">Talk to our team <span aria-hidden="true"></span></NavLink></MagneticButton>

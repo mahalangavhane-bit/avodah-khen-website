@@ -67,8 +67,8 @@ function Mandate() {
     <main className="mandate-page">
       <section className="mandate-hero">
         <div className="mandate-container">
-          <span className="mandate-eyebrow anim-1">AVODAH &amp; KHEN LLP</span>
-          <WordReveal as="h1" trigger="mount" delay={140} step={50}>
+          <span className="mandate-eyebrow anim-1 reveal">AVODAH &amp; KHEN LLP</span>
+          <WordReveal as="h1" trigger="view" delay={140} step={50}>
             Why Should You Appoint Us As Your Sole Selling Partner
             <span> for Your Project</span>
           </WordReveal>

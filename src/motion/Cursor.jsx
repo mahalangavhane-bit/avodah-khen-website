@@ -33,23 +33,17 @@ export default function Cursor() {
       body.dataset.cursor = t.closest(TEXT) ? "text" : t.closest("[data-cursor='image']") ? "image" : t.closest(INTERACTIVE) ? "link" : "";
     };
     const out = (e) => { if (!e.relatedTarget) { shown = false; body.classList.remove("av-cursor-on"); } };
-    const down = () => body.classList.add("av-cursor-down");
-    const up = () => body.classList.remove("av-cursor-down");
-
+  
     document.addEventListener("pointermove", move, { passive: true });
     document.addEventListener("pointerover", over, { passive: true });
     document.addEventListener("pointerout", out);
-    document.addEventListener("pointerdown", down);
-    document.addEventListener("pointerup", up);
     frame = requestAnimationFrame(loop);
     return () => {
       cancelAnimationFrame(frame);
       document.removeEventListener("pointermove", move);
       document.removeEventListener("pointerover", over);
       document.removeEventListener("pointerout", out);
-      document.removeEventListener("pointerdown", down);
-      document.removeEventListener("pointerup", up);
-      body.classList.remove("av-cursor-on", "av-cursor-down");
+      body.classList.remove("av-cursor-on");
       delete body.dataset.cursor;
     };
   }, []);
