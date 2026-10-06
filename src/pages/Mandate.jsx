@@ -1,5 +1,8 @@
 import React from "react";
 import useReveal from "../hooks/useReveal.js";
+import WordReveal from "../motion/WordReveal.jsx";
+import CountUp from "../motion/CountUp.jsx";
+import Timeline from "../motion/Timeline.jsx";
 
 const steps = [
   {
@@ -65,10 +68,10 @@ function Mandate() {
       <section className="mandate-hero">
         <div className="mandate-container">
           <span className="mandate-eyebrow anim-1">AVODAH &amp; KHEN LLP</span>
-          <h1 className="anim-2">
+          <WordReveal as="h1" trigger="mount" delay={140} step={50}>
             Why Should You Appoint Us As Your Sole Selling Partner
             <span> for Your Project</span>
-          </h1>
+          </WordReveal>
         </div>
       </section>
 
@@ -83,7 +86,7 @@ function Mandate() {
               mandates and brand mandates can directly impact your revenue,
               pricing discipline, and inventory absorption.
               <br />
-              At Avodah &amp; Khen we are Backed by 20+ years experience in
+              At Avodah &amp; Khen we are Backed by <CountUp end={20} suffix="+" /> years experience in
               sales &amp; brand mandates, we support developers across Mumbai
               with structured exclusive mandate models.
             </p>
@@ -121,7 +124,7 @@ function Mandate() {
             <span className="mandate-label">STEP-BY-STEP GUIDE</span>
             <h3>While Appointing Us As Your Sole Selling Partner, You Need To...</h3>
           </div>
-          <div className="mandate-steps">
+          <Timeline axis="y" className="mandate-steps">
             {steps.map((step) => (
               <article className="mandate-step reveal" key={step.number}>
                 <div className="mandate-step-number">{step.number}</div>
@@ -141,7 +144,7 @@ function Mandate() {
                 </div>
               </article>
             ))}
-          </div>
+          </Timeline>
         </div>
       </section>
 
@@ -214,7 +217,7 @@ function Mandate() {
           <div className="mandate-heading reveal">
             <span className="mandate-label">AVODAH &amp; KHEN LLP</span>
             <h3>How Avodah &amp; Khen LLP Supports Developers</h3>
-            <p>With 20+ years experience in sales &amp; brand mandates, we offer:</p>
+            <p>With <CountUp end={20} suffix="+" /> years experience in sales &amp; brand mandates, we offer:</p>
           </div>
           <div className="mandate-grid">
             {support.map((item, index) => (

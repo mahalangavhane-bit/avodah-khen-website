@@ -64,26 +64,26 @@ select {
   align-items: center;
   padding: 5px 3vw;
   min-height: 60px;
-  background: rgba(250, 246, 240, 0.92);
+  background-color: #F4F6F7;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 }
 
 .logo {
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-shrink: 0;
   text-decoration: none;
-  margin-left: -10px;
+  margin-left: 15px;
 }
 
 .company-logo {
   display: block;
-  width: 75px;
-  height: 75px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   transform: scale(1.5);
-  transform-origin: left center;
+  transform-origin: left;
 }
 
 .mark {
@@ -474,7 +474,7 @@ h2 {
 
 .foot {
   padding: 56px 6vw 28px;
-  background: rgba(250, 246, 240, 0.92);
+  background: #F4F6F7;
   color: black;
 }
 .foot a {
@@ -499,7 +499,7 @@ h2 {
 
 .foot {
   padding: 56px 6vw 28px;
-  background: rgba(250, 246, 240, 0.92);
+  background: #F4F6F7;
   color: #000000;
 }
 
@@ -694,12 +694,10 @@ h2 {
 .marquee-track {
   display: flex;
   gap: 48px;
-  width: max-content;
   animation: slide 28s linear infinite;
   color: var(--forest);
-  font-weight: 700;
+  font-weight: 100;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   font-size: 0.78rem;
 }
 
@@ -957,68 +955,80 @@ h2 {
    MANDATE HERO
    ========================================= */
 
-.mandate-hero {
+ .mandate-hero {
   position: relative;
-  min-height: 68vh;
+  min-height: 78vh;
   display: flex;
   align-items: flex-end;
-  padding: 110px 0 90px;
+  padding: 130px 0 86px;
   overflow: hidden;
-  background:
-    linear-gradient(
-      125deg,
-      rgba(20, 34, 31, 0.97),
-      rgba(27, 61, 54, 0.92)
-    );
+  isolation: isolate;
   color: var(--sand);
+  background:
+    linear-gradient(90deg, rgba(12, 27, 24, 0.96) 0%, rgba(12, 27, 24, 0.78) 42%, rgba(12, 27, 24, 0.38) 100%),
+    linear-gradient(0deg, rgba(12, 27, 24, 0.88) 0%, rgba(12, 27, 24, 0.12) 68%),
+    url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=90") center 46% / cover no-repeat;
+  animation: mandateHeroEntrance 1s ease both;
 }
 
 .mandate-hero::before {
   content: "";
   position: absolute;
-  width: 520px;
-  height: 520px;
-  right: -180px;
-  top: -160px;
-  border-radius: 50%;
-  background: rgba(196, 92, 38, 0.18);
-  filter: blur(10px);
+  inset: -2%;
+  z-index: -2;
+  background: inherit;
+  transform: scale(1.04);
+  animation: mandateHeroZoom 16s ease-in-out infinite alternate;
+  transform-origin: center;
 }
 
 .mandate-hero::after {
   content: "";
   position: absolute;
-  width: 280px;
-  height: 280px;
-  left: -100px;
-  bottom: -130px;
-  border-radius: 50%;
-  border: 1px solid rgba(243, 235, 225, 0.16);
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(196, 92, 38, 0.16), transparent 26%),
+    linear-gradient(110deg, transparent 0%, rgba(227, 176, 137, 0.05) 48%, transparent 72%);
+  animation: mandateLightSweep 9s ease-in-out infinite alternate;
 }
 
 .mandate-hero .mandate-container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .mandate-eyebrow {
-  display: inline-block;
-  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
   color: #e3b089;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
+.mandate-eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: #e3b089;
+  transform-origin: left;
+  animation: mandateLineReveal 0.9s ease 0.25s both;
+}
+
 .mandate-hero h1 {
-  max-width: 900px;
+  max-width: 1080px;
   margin: 0;
   color: var(--sand);
-  font-size: clamp(2.7rem, 6vw, 5.5rem);
-  line-height: 1.02;
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-size: clamp(3.4rem, 7vw, 7rem);
+  line-height: 0.94;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
 }
 
 .mandate-hero h1 span {
@@ -1027,10 +1037,30 @@ h2 {
 
 .mandate-hero-text {
   max-width: 600px;
-  margin-top: 25px;
+  margin-top: 28px;
   color: rgba(243, 235, 225, 0.75);
   font-size: 1.08rem;
   line-height: 1.7;
+}
+
+@keyframes mandateHeroEntrance {
+  from { opacity: 0.86; }
+  to { opacity: 1; }
+}
+
+@keyframes mandateHeroZoom {
+  from { transform: scale(1.04); }
+  to { transform: scale(1.1); }
+}
+
+@keyframes mandateLightSweep {
+  from { transform: translateX(-2%); opacity: 0.65; }
+  to { transform: translateX(2%); opacity: 1; }
+}
+
+@keyframes mandateLineReveal {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
 }
 
 /* =========================================
@@ -2356,8 +2386,8 @@ h2 {
   }
 
   .logo .company-logo {
-    width: 145px;
-    height: 50px;
+    width: 130px;
+    height: 30px;
   }
   .topbar nav {
     display: none;
@@ -2366,7 +2396,7 @@ h2 {
 
     top: 64px;
     left: 0;
-    right: 0;
+    right:  100;
 
     flex-direction: column;
 
@@ -2804,6 +2834,16 @@ h2 {
 
 /* MOBILE */
 @media (max-width: 768px) {
+  .company-logo {
+    width: 100px;
+    height: auto;
+    display: block;
+  }
+
+  .logo {
+    display: flex;
+    align-items: left;
+  }
   .contact-socials {
     position: fixed;
     right: 10px;
@@ -7608,4 +7648,136 @@ h2 {
 
 .cr-results-count {
   color: #5f6965;
+}
+
+/* =========================================
+   MANDATE PREMIUM HERO OVERRIDES
+   Content intentionally unchanged.
+========================================= */
+.mandate-hero .anim-1 {
+  animation: mandatePremiumEyebrow 0.8s cubic-bezier(.22,1,.36,1) both;
+}
+
+.mandate-hero .anim-2 {
+  animation: mandatePremiumTitle 1.05s cubic-bezier(.22,1,.36,1) 0.12s both;
+}
+
+@keyframes mandatePremiumEyebrow {
+  from { opacity: 0; transform: translateY(18px); letter-spacing: 0.08em; }
+  to { opacity: 1; transform: translateY(0); letter-spacing: 0.2em; }
+}
+
+@keyframes mandatePremiumTitle {
+  from { opacity: 0; transform: translateY(54px); filter: blur(7px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@media (max-width: 768px) {
+  .mandate-hero {
+    min-height: 72svh;
+    padding: 118px 0 58px;
+    align-items: flex-end;
+    background-position: 62% center;
+  }
+
+  .mandate-hero::before {
+    animation-duration: 20s;
+  }
+
+  .mandate-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.35rem, 11vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  .mandate-eyebrow {
+    margin-bottom: 18px;
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+  }
+
+  .mandate-eyebrow::before {
+    width: 24px;
+  }
+
+  .mandate-hero-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 420px) {
+  .mandate-hero {
+    min-height: 68svh;
+    padding: 108px 0 48px;
+  }
+
+  .mandate-hero h1 {
+    font-size: clamp(2.05rem, 10.5vw, 3rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mandate-hero,
+  .mandate-hero::before,
+  .mandate-hero::after,
+  .mandate-eyebrow::before,
+  .mandate-hero .anim-1,
+  .mandate-hero .anim-2 {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+/* =========================================
+   MOBILE NAVBAR — LOGO DIRECTLY LEFT
+   ========================================= */
+
+@media (max-width: 768px) {
+  .topbar {
+    width: 100%;
+    min-height: 60px;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .topbar .logo {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+  }
+
+  .topbar .company-logo {
+    width: 105px !important;
+    height: auto !important;
+    max-height: 42px;
+    object-fit: contain;
+    transform: none !important;
+    transform-origin: left center;
+    margin: 0 !important;
+  }
+
+  .menu-btn {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+}
+
+/* Smaller phones */
+@media (max-width: 420px) {
+  .topbar {
+    padding-left: 8px;
+    padding-right: 14px;
+  }
+
+  .topbar .company-logo {
+    width: 100px !important;
+    max-height: 40px;
+  }
 }

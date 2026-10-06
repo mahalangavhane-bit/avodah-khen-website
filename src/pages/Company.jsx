@@ -38,7 +38,7 @@ const distinctions = [
 export default function Company() {
   useReveal();
   return (
-    <div className="av-company">
+    <main className="av-company">
       <section className="av-company-hero">
         <div className="av-company-hero-image" aria-hidden="true" />
         <div className="av-company-hero-content hero-enter"><p className="av-eyebrow av-eyebrow-light">AVODAH & KHEN LLP</p><h1>Real Estate.<br />Technology.<br /><em>Intelligence.</em></h1><p>A connected platform for property discovery, mandates, sales, CRM, data and AI-powered real estate.</p><NavLink className="av-button av-button-copper" to="/contact">Connect with us <span aria-hidden="true">↗</span></NavLink></div>
@@ -80,6 +80,6 @@ export default function Company() {
       <section className="av-company-vision reveal"><div className="av-company-label av-eyebrow-light">OUR VISION</div><h2>Build the operating system for a smarter, more connected <em>real estate market.</em></h2><div className="av-company-vision-words reveal-stagger"><span className="stagger-card">Discover.</span><span className="stagger-card">Engage.</span><span className="stagger-card">Convert.</span></div><p>We are building technology that brings property discovery, mandates, marketing, CRM, sales and intelligence into one connected experience.</p></section>
 
       <section className="av-company-cta reveal"><div><div className="av-company-label">AVODAH PROPTECH</div><h2>Let’s build the future<br /><em>of real estate.</em></h2><p>Partner with us for property mandates, technology, lead generation, CRM, AI and sales execution.</p></div><div className="av-company-contact"><NavLink className="av-button av-button-dark" to="/contact">Contact us <span aria-hidden="true">↗</span></NavLink></div></section>
-    </div>
+    </main>
   );
 }
