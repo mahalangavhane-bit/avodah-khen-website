@@ -1,5 +1,6 @@
 import { NavLink } from "../components/router.jsx";
 import useReveal from "../hooks/useReveal.js";
+<<<<<<< HEAD
 import WordReveal from "../motion/WordReveal.jsx";
 import MagneticButton from "../motion/MagneticButton.jsx";
 import ParallaxImage from "../motion/ParallaxImage.jsx";
@@ -13,10 +14,27 @@ import { editorialStrip, statementImage, heroPoster, solutionImages } from "../d
 
 const marqueeWords = ["Real Estate", "Strategy", "Technology", "Data", "Execution", "Investment", "PropTech"];
 
+=======
+import heroImage from "../assets/hero-real-estate.jpg";
+import introImage from "../assets/whoweare.jpg";
+import proptechImage from "../assets/proptech1.jpg";
+import aiImage from "../assets/aidata.jpg";
+import executionImage from "../assets/sales-execution.jpg";
+import gapImage from "../assets/frag_workflows.jpg";
+import {
+  FiArrowRight,
+  FiHome,
+  FiCpu,
+  FiBriefcase,
+  FiUsers,
+  FiTrendingUp,
+  FiZap
+} from "react-icons/fi";
+>>>>>>> e0e939b (Update homepage and careers design)
 const pillars = [
-  { number: "01", title: "PropTech", text: "Digital products that simplify how property is discovered, marketed and sold." },
-  { number: "02", title: "AI + Data", text: "Intelligence that helps teams make faster, more informed decisions." },
-  { number: "03", title: "Execution", text: "Technology combined with real-world sales and property expertise." },
+  {image: proptechImage, title: "PropTech", text: "Digital products that simplify how property is discovered, marketed and sold." },
+  {image: aiImage, title: "AI + Data", text: "Intelligence that helps teams make faster, more informed decisions." },
+  {image: executionImage, title: "Execution", text: "Technology combined with real-world sales and property expertise." },
 ];
 
 const challenges = [
@@ -25,10 +43,51 @@ const challenges = [
   { number: "03", title: "Limited intelligence", text: "Decisions often lack a single view of demand, pricing and performance." },
   { number: "04", title: "Complex sales", text: "Mandates, channel partners and follow-ups require constant coordination." },
 ];
-
-const ecosystem = [
-  ["Property Portal", "Discover"], ["AI + Data", "Understand"], ["Mandates", "Represent"], ["CRM", "Manage"], ["Sales", "Convert"],
+const ecosystemCapabilities = [
+  {
+    number: "01",
+    title: "PROPERTY PORTAL",
+    action: "Discover",
+    text: "Discover properties and explore real estate opportunities.",
+    Icon: FiHome,
+  },
+  {
+    number: "02",
+    title: "AI + DATA",
+    action: "Understand",
+    text: "Turn property data into meaningful insights and informed decisions.",
+    Icon: FiCpu,
+  },
+  {
+    number: "03",
+    title: "MANDATES",
+    action: "Represent",
+    text: "Structure and represent real estate opportunities.",
+    Icon: FiBriefcase,
+  },
+  {
+    number: "04",
+    title: "CRM",
+    action: "Manage",
+    text: "Organize leads, relationships and customer journeys.",
+    Icon: FiUsers,
+  },
+  {
+    number: "05",
+    title: "SALES",
+    action: "Convert",
+    text: "Move qualified opportunities through the sales pipeline.",
+    Icon: FiTrendingUp,
+  },
+  {
+    number: "06",
+    title: "AUTOMATION",
+    action: "Optimize",
+    text: "Streamline repetitive tasks and connected workflows.",
+    Icon: FiZap,
+  },
 ];
+
 
 const solutions = [
   { number: "01", title: "Property Portal", text: "A digital destination for property discovery, project and inventory exploration, rich profiles and buyer enquiries.", to: "/proptech", link: "Explore PropTech" },
@@ -39,9 +98,50 @@ const solutions = [
   { number: "06", title: "Data & Market Intelligence", text: "Bring demand signals, pricing visibility and funnel analytics into clearer business decisions.", to: "/research", link: "Explore insights" },
 ];
 
+
 const steps = [
-  ["01", "Acquire", "Mandate / inventory"], ["02", "Position", "Strategy + content"], ["03", "Generate", "Marketing + demand"],
-  ["04", "Manage", "CRM + channels"], ["05", "Convert", "Visits + sales"], ["06", "Learn", "Data + optimization"],
+  {
+    number: "01",
+    title: "Acquire",
+    detail: "Mandate / inventory",
+    image: proptechImage,
+    Icon: FiHome,
+  },
+  {
+    number: "02",
+    title: "Position",
+    detail: "Strategy + content",
+    image: introImage,
+    Icon: FiTrendingUp,
+  },
+  {
+    number: "03",
+    title: "Generate",
+    detail: "Marketing + demand",
+    image: aiImage,
+    Icon: FiArrowRight,
+  },
+  {
+    number: "04",
+    title: "Manage",
+    detail: "CRM + channels",
+    image: executionImage,
+    Icon: FiUsers,
+  },
+  {
+    number: "05",
+    title: "Convert",
+    detail: "Visits + sales",
+    image: heroImage,
+    Icon: FiBriefcase,
+  },
+  {
+    number: "06",
+    title: "Learn",
+    detail: "Data + optimization",
+    image: gapImage,
+    Icon: FiCpu,
+  },
 ];
 
 const reasons = [
@@ -56,7 +156,14 @@ export default function Home() {
   return (
     <main className="av-home">
       <section className="av-home-hero">
+<<<<<<< HEAD
         <HeroVideo className="av-home-hero-image" speed={0.14} poster={heroPoster} />
+=======
+        <div className="av-home-hero-image"
+              aria-hidden="true"
+              style={{ backgroundImage: `url(${heroImage})` }}
+          />
+>>>>>>> e0e939b (Update homepage and careers design)
         <div className="av-home-hero-shade" aria-hidden="true" />
         <div className="av-home-hero-content hero-seq">
           <p className="av-eyebrow av-eyebrow-light">REAL ESTATE. REIMAGINED WITH PROPTECH</p>
@@ -69,6 +176,7 @@ export default function Home() {
           <a className="hero-scroll" href="#who-we-are" onClick={(e) => { e.preventDefault(); document.getElementById("who-we-are")?.scrollIntoView({ behavior: "smooth" }); }} aria-label="Scroll to content"><span>Scroll</span><i aria-hidden="true" /></a>
         </div>
       </section>
+<<<<<<< HEAD
 
       <Marquee items={marqueeWords} />
 
@@ -152,20 +260,154 @@ export default function Home() {
         <Timeline axis="x" className="av-process-grid reveal-stagger">
           {steps.map(([number, title, detail]) => <article className="av-process-step stagger-card" key={number}><span><CountUp end={Number(number)} pad={2} duration={900} /></span><h3>{title}</h3><p>{detail}</p></article>)}
         </Timeline>
-      </section>
+=======
+      
+      <section
+        className="av-connected-ecosystem reveal"
+        aria-labelledby="av-connected-ecosystem-title"
+      >
+        <div className="av-ecosystem-copy">
+          <div className="av-section-kicker">
+            OUR CONNECTED ECOSYSTEM
+          </div>
 
+          <h2 id="av-connected-ecosystem-title">
+            One ecosystem,
+            <br />
+            <em>connected intelligence.</em>
+          </h2>
+
+          <span
+            className="av-ecosystem-accent"
+            aria-hidden="true"
+          />
+
+          <p>
+            From property discovery to conversion, our connected
+            capabilities bring intelligence, relationships and
+            execution together.
+          </p>
+
+          <NavLink className="av-ecosystem-cta" to="/proptech">
+            EXPLORE OUR ECOSYSTEM
+            <FiArrowRight aria-hidden="true" />
+          </NavLink>
+        </div>
+
+        <div className="av-ecosystem-panel">
+          <div className="av-ecosystem-panel-heading">
+            <span>CORE CAPABILITIES</span>
+            <i aria-hidden="true" />
+          </div>
+
+          <div className="av-ecosystem-capabilities">
+            {ecosystemCapabilities.map(
+              ({ number, title, action, text, Icon }) => (
+                <article
+                  className="av-ecosystem-capability"
+                  key={number}
+                >
+                  <div className="av-ecosystem-icon">
+                    <Icon aria-hidden="true" />
+                  </div>
+
+                  <div className="av-ecosystem-capability-copy">
+                    <div className="av-ecosystem-capability-title">
+                      <h3>{title}</h3>
+                      <span>{action}</span>
+                    </div>
+                    <p>{text}</p>
+                  </div>
+                </article>
+              )
+            )}
+          </div>
+
+          <NavLink
+            className="av-ecosystem-bottom-link"
+            to="/services"
+          >
+            DISCOVER OUR CAPABILITIES
+            <FiArrowRight aria-hidden="true" />
+          </NavLink>
+        </div>
+>>>>>>> e0e939b (Update homepage and careers design)
+      </section>
+      
+<section className="av-section av-process-section reveal">
+  <div className="av-process-kicker">
+    <span />
+    HOW WE WORK
+    <span />
+  </div>
+
+  <div className="av-process-heading">
+    <h2>
+      A repeatable model.
+      <br />
+      <em>Measurable outcomes.</em>
+    </h2>
+    <p>From property acquisition to data-led optimization.</p>
+  </div>
+
+  <div className="av-process-grid reveal-stagger">
+    {steps.map(({ number, title, detail, image, Icon }) => (
+      <article className="av-process-step stagger-card" key={number}>
+        <div className="av-process-image">
+          <img src={image} alt="" loading="lazy" />
+          <span className="av-process-number">{number}</span>
+          <span className="av-process-image-icon">
+            <Icon aria-hidden="true" />
+          </span>
+        </div>
+
+        <div className="av-process-step-copy">
+          <span className="av-process-step-label">{title.toUpperCase()}</span>
+          <h3>{title}</h3>
+          <p>{detail}</p>
+          <span className="av-process-step-accent" />
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div className="av-process-footer">
+    <span />
+    A CONNECTED JOURNEY. LASTING VALUE.
+    <span />
+  </div>
+</section>
+
+<<<<<<< HEAD
       <Marquee variant="display" reverse speed={70} items={["AVODAH & KHEN", "PropTech", "AI + Data", "Real Estate", "Execution", "Strategy"]} />
 
       <section className="av-section av-why-section">
         <PremiumReveal variant="clip" className="av-why-image" role="img" aria-label="Contemporary residential development" data-cursor="image" />
         <div className="av-why-content"><div className="av-section-kicker">WHY AVODAH</div><WordReveal>Technology grounded in <em>real estate execution.</em></WordReveal><p className="av-why-lede">Built to bridge technology and real estate execution.</p>
+=======
+      <section className="av-section av-why-section reveal">
+      
+      <div className="av-why-video">
+  <img
+    src={executionImage}
+    alt="Real estate sales and property execution"
+    loading="lazy"
+  />
+</div>
+        <div className="av-why-content"><div className="av-section-kicker">WHY AVODAH</div><h2>Technology grounded in <em>real estate execution.</em></h2><p className="av-why-lede">Built to bridge technology and real estate execution.</p>
+>>>>>>> e0e939b (Update homepage and careers design)
           <div className="av-reason-list reveal-stagger">{reasons.map(([title, text], index) => <div className="av-reason stagger-card" key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></div>)}</div>
         </div>
       </section>
 
       <section className="av-contact-cta reveal">
+<<<<<<< HEAD
         <div><div className="av-section-kicker">LET’S CONNECT</div><WordReveal>Let’s build the future<br /><em>of real estate.</em></WordReveal><p>Partner with us for property mandates, technology, lead generation, CRM, AI and sales execution.</p></div>
         <div className="av-contact-details"><NavLink className="av-button av-button-dark" to="/contact">Contact AVODAH <span aria-hidden="true">↗</span></NavLink></div>
+=======
+        <div><div className="av-section-kicker">LET’S CONNECT</div><h2>Let’s build the future<br /><em>of real estate.</em></h2><p>Partner with us for property mandates, technology, lead generation, CRM, AI and sales execution.</p></div>
+        <div className="av-contact-details"><NavLink className="av-button av-button-dark" to="/contact">Contact AVODAH</NavLink></div>
+>>>>>>> e0e939b (Update homepage and careers design)
       </section>
     </main>
   );

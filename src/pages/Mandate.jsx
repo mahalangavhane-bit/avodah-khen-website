@@ -1,31 +1,39 @@
 import React from "react";
 import useReveal from "../hooks/useReveal.js";
+<<<<<<< HEAD
 import WordReveal from "../motion/WordReveal.jsx";
 import CountUp from "../motion/CountUp.jsx";
 import Timeline from "../motion/Timeline.jsx";
+=======
+import salesObjectivesImage from "../assets/sales-objectives.jpg";
+import mandateAgreementImage from "../assets/mandate-agreement.jpg";
+import salesKpiImage from "../assets/sales-kpi.jpg";
+import salesExecutionImage from "../assets/sales-execution.jpg";
+import soleSellingImage from "../assets/sale-partner-meeting.jpg";
+>>>>>>> e0e939b (Update homepage and careers design)
 
 const steps = [
   {
-    number: "01",
+    image: salesObjectivesImage,
     title: "Define Your Sales Objectives, So That We As Your Sole Selling Partner.",
     intro: "Get Clarity To Attain Our Aommox GOAC. of Branding, Quick Sales At The Best Rates. So we need Clarity On..",
     items: ["Target buyer segment", "Total inventory size", "Target revenue", "Funding & cash-flow requirement", "Launch timeline", "Sales cycle expectation"],
   },
   {
-    number: "02",
+    image: mandateAgreementImage,
     title: "Negotiate the Mandate Agreement",
     intro: "We Ensure That Our Agreement with the Developer Clearly Defines:",
     items: ["Revenue targets", "Commission structure", "Exclusive Clause", "Marketing responsibilities under brand mandates", "Duration", "Reporting frequency", "Exit Clause"],
     notes: ["Legal clarity ensures smooth execution of sales mandate."],
   },
   {
-    number: "03",
+    image: salesKpiImage,
     title: "Set Performance KPIs (Key Performance Indicators)",
     intro: "We Define measurable KPIs such as:",
     items: ["Site visit targets", "Monthly booking targets", "Channel partner activation numbers", "Conversion ratios", "Inventory absorption rate", "Revenue milestone tracking"],
   },
   {
-    number: "04",
+    image: salesExecutionImage,
     title: "Sales",
     intro: "For maximum impact: We ensure that...",
     items: ["Digital marketing must support on-ground sales", "Branding must be unified", "Messaging must remain consistent", "CRM tracking must be active", "Campaigns must align with pricing"],
@@ -67,14 +75,20 @@ function Mandate() {
     <main className="mandate-page">
       <section className="mandate-hero">
         <div className="mandate-container">
+<<<<<<< HEAD
           <span className="mandate-eyebrow anim-1 reveal">AVODAH &amp; KHEN LLP</span>
           <WordReveal as="h1" trigger="view" delay={140} step={50}>
+=======
+          <span className="mandate-eyebrow anim-1">AVODAH &amp; KHEN</span>
+          <h1 className="anim-2">
+>>>>>>> e0e939b (Update homepage and careers design)
             Why Should You Appoint Us As Your Sole Selling Partner
             <span> for Your Project</span>
           </WordReveal>
         </div>
       </section>
 
+<<<<<<< HEAD
       <section className="mandate-section">
         <div className="mandate-container">
           <div className="mandate-intro reveal">
@@ -93,6 +107,42 @@ function Mandate() {
           </div>
         </div>
       </section>
+=======
+  <section className="mandate-section mandate-intro-section">
+  <div className="mandate-container">
+    <div className="mandate-intro mandate-intro-split reveal">
+      <div className="mandate-intro-content">
+        <span className="mandate-label">
+          SOLE SELLING PARTNER
+        </span>
+
+        <h3>Step-By-Step Guide For Developers In India</h3>
+
+        <p>
+          Launching a real estate project is a major financial decision.
+          Choosing the right Sole Selling Partner under structured sales
+          mandates and brand mandates can directly impact your revenue,
+          pricing discipline, and inventory absorption.
+        </p>
+
+        <p>
+          At Avodah &amp; Khen, backed by 20+ years of experience in
+          sales &amp; brand mandates, we support developers across Mumbai
+          with structured exclusive mandate models.
+        </p>
+      </div>
+
+      <div className="mandate-intro-image">
+        <img
+          src={soleSellingImage}
+          alt="Real estate professionals discussing a residential project"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+>>>>>>> e0e939b (Update homepage and careers design)
 
       <section className="mandate-section mandate-light">
         <div className="mandate-container">
@@ -124,6 +174,7 @@ function Mandate() {
             <span className="mandate-label">STEP-BY-STEP GUIDE</span>
             <h3>While Appointing Us As Your Sole Selling Partner, You Need To...</h3>
           </div>
+<<<<<<< HEAD
           <Timeline axis="y" className="mandate-steps">
             {steps.map((step) => (
               <article className="mandate-step reveal" key={step.number}>
@@ -145,6 +196,43 @@ function Mandate() {
               </article>
             ))}
           </Timeline>
+=======
+        <div className="mandate-steps">
+          {steps.map((step) => (
+        <article
+          className="mandate-step mandate-step-with-image reveal"
+          key={step.number}
+        >
+      <div className="mandate-step-image">
+        <img src={step.image} alt={step.title} loading="lazy" />
+      </div>
+
+      <div className="mandate-step-content">
+        <h3>{step.title}</h3>
+
+        {step.intro && <p>{step.intro}</p>}
+
+        <ul>
+          {step.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+
+        {step.notes && (
+          <div className="mandate-notes">
+            {step.notes.map((note) => (
+              <p key={note}>
+                <strong>Note: </strong>
+                {note}
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
+    </article>
+  ))}
+</div>
+>>>>>>> e0e939b (Update homepage and careers design)
         </div>
       </section>
 
@@ -152,7 +240,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-heading reveal">
             <span className="mandate-label">KEY BENEFITS</span>
-            <h3>Benefits of Appointing Avodah &amp; Khen LLP a Sole Selling Partner</h3>
+            <h3>Benefits of Appointing Avodah &amp; Khen a Sole Selling Partner</h3>
           </div>
           <div className="mandate-grid">
             {benefits.map((benefit, index) => (
@@ -169,7 +257,7 @@ function Mandate() {
         <div className="mandate-container">
           <div className="mandate-heading reveal">
             <span className="mandate-label">TIMING</span>
-            <h3>When Should You Appoint Avodah &amp; Khen LLP As Your Sole Selling Partner?</h3>
+            <h3>When Should You Appoint Avodah &amp; Khen As Your Sole Selling Partner?</h3>
           </div>
           <div className="mandate-grid">
             {whenToAppoint.map((item) => (
@@ -215,9 +303,15 @@ function Mandate() {
       <section className="mandate-section mandate-dark">
         <div className="mandate-container">
           <div className="mandate-heading reveal">
+<<<<<<< HEAD
             <span className="mandate-label">AVODAH &amp; KHEN LLP</span>
             <h3>How Avodah &amp; Khen LLP Supports Developers</h3>
             <p>With <CountUp end={20} suffix="+" /> years experience in sales &amp; brand mandates, we offer:</p>
+=======
+            <span className="mandate-label">AVODAH &amp; KHEN</span>
+            <h3>How Avodah &amp; Khen Supports Developers</h3>
+            <p>With 20+ years experience in sales &amp; brand mandates, we offer:</p>
+>>>>>>> e0e939b (Update homepage and careers design)
           </div>
           <div className="mandate-grid">
             {support.map((item, index) => (
@@ -317,7 +411,7 @@ function Mandate() {
           </ul>
           <br />
           <p>
-            Connect with AVODAH &amp; KHEN LLP today and let's structure your
+            Connect with AVODAH &amp; KHEN today and let's structure your
             project under a powerful exclusive{" "}
             <strong>sales mandates and brand mandates</strong> model.
           </p>
